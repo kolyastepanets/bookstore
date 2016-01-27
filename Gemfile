@@ -59,4 +59,4 @@ group :test do
   gem 'shoulda-matchers', '~> 2.5'
 end
 
-
+gem 'rails_12factor', group: :production
