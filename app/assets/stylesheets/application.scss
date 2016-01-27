@@ -27,6 +27,8 @@ body {
 
 
 
+
+
 /* APPLICATION HTML */
 
 .container-fluid {
@@ -102,6 +104,9 @@ body {
 
 
 
+
+
+
 /* HOME PAGE */
 
 .title-book {
@@ -141,6 +146,10 @@ body {
   margin-right: 5px;
   font-size: 12px;
 }
+
+
+
+
 
 
 
@@ -195,4 +204,46 @@ label.remember_me {
 .sign-up-btn {
   margin-left: 10px;
   text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+/* BOOKS INDEX */
+
+.title-book {
+  font-size: 16px;
+}
+
+.product {
+  margin-bottom: 20px;
+}
+
+.link-button {
+  text-align: center;
+  font-size: 16px;
+}
+
+.price-product {
+  text-align: center;
+  color: black;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.category {
+  font-size: 14px;
+}
+
+.row-eq-height-xs {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:  flex;
+  flex-direction: initial;
+  flex-wrap: wrap;
 }
