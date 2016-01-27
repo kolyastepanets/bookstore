@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root 'static_pages#home'
 
-  resources :books
+  resources :books do
+    resources :reviews
+  end
+
   resources :authors
   resources :categories
   # The priority is based upon order of creation: first created -> highest priority.

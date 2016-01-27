@@ -7,12 +7,12 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe 'GET #show' do
     it 'has array of categories' do
-      # get :show
+      get :show, id: category
       expect(assigns(:categories)).to match_array(categories)
     end
 
     it 'has array of books' do
-      get :show
+      get :show, id: category
       expect(assigns(:books)).to match_array(books)
     end
 

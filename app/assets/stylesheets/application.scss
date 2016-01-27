@@ -247,3 +247,117 @@ label.remember_me {
   flex-direction: initial;
   flex-wrap: wrap;
 }
+
+
+
+
+
+/* BOOKS SHOW */
+
+.title-book {
+  font-size: 16px;
+}
+
+.book-price-on-book-page {
+  font-size: 20px;
+  margin-top: 12px;
+}
+
+.description-text {
+  font-size: 13px;
+  min-height: 200px;
+  margin: 0;
+}
+
+.reviews {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.div-review {
+  margin: 0;
+  padding: 0;
+}
+
+.reviews-title, .link-add-review {
+  margin: 0;
+}
+
+.add-review-btn {
+  text-decoration: underline;
+  padding: 0;
+}
+
+.the-whole-review {
+  margin-bottom: 30px;
+}
+
+th.book-rating {
+  padding: 0;
+  width: 120px;
+  margin: 0;
+}
+
+th.title-review {
+  font-size: 14px;
+  width: 1%;
+  white-space: nowrap;
+}
+
+th.created-review {
+  font-size: 14px;
+  color: #777777;;
+}
+
+.link-to-customer {
+  margin-bottom: 10px;
+}
+
+.link {
+  text-decoration: underline;
+}
+
+
+
+
+
+/* REVIEW NEW */
+
+.title-review-for-new-page {
+  margin: 0;
+  padding: 0;
+  width: 170px;
+}
+
+.book-title-for-new-review {
+  margin: 0;
+  padding: 3px 0;
+  font-size: 17px;
+  text-decoration: underline;
+}
+
+.review-field {
+  margin-bottom: 10px;
+}
+
+.text-beside-btn-review {
+  display: inline;
+  margin-left: 10px;
+}
+
+.link-beside-btn-review {
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+.select-for-rating {
+  margin-bottom: 10px;
+}
+
+.label-rating {
+  margin-right: 10px;
+}
+
+.whole-title-new-review {
+  margin-bottom: 20px;
+}
