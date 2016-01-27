@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root 'static_pages#home'
+
+  resources :books
+  resources :authors
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

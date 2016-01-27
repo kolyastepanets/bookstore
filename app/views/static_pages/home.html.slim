@@ -1,0 +1,46 @@
+- @books.each do |book|
+
+  div class="row"
+    div class="title-book"
+      div class="col-xs-12"
+        p class="title_with_author"
+          = link_to truncate(book.title, length: 45), book_path(book)
+        p class="title_with_author"
+          |
+            by
+        p class="title_with_author"
+          =' book.author.firstname
+          = book.author.lastname
+
+  div class="row"
+    div class="col-xs-4"
+      = link_to book_path(book)
+        = image_tag("default.png")
+
+    div class="col-xs-8"
+      p class="description-text"
+        = truncate(book.description, length: 900)
+
+  div class="row"
+    div class="col-xs-4"
+
+    div class="col-xs-8"
+      div class="row"
+
+        div class="col-xs-2"
+          div class="book-price"
+            = number_to_currency(book.price)
+
+        div class="col-xs-10"
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="1", style="width: 35px; margin-right: 10px;">
+            </div>
+            <button type="submit" class="btn btn-default">ADD TO CART</button>
+          </form>
+
+= paginate @books
+
+div class="footer"
+  p class="footer-text"
+    | Welcome to our amazing Bookstore! Choose anything you wish, we'll ship it anywhere!

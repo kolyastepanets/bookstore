@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    title
+      | The Bookstore
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    .container-fluid
+      .header
+        .row
+          .col-xs-3.header-info
+            h3.text-muted
+              | The Bookstore
+
+          .col-xs-3.header-info
+            .home-shop
+              ul.nav.nav-pills
+                li[role="presentation"]
+                  = link_to 'Home', root_path
+                li[role="presentation"]
+                  = link_to 'Shop', books_path
+
+          .col-xs-3.header-info
+            .col-xs-6.cart-img
+              = image_tag("cart.png", :alt => "Cart", class:"image-cart")
+            //.col-xs-6.cart-text
+              - if @cart.order_items.size == 0
+                p class="empty-cart"
+                  | (Empty Cart)
+              - elsif @cart.order_items.size == 1
+                = link_to "#{@cart.order_items.size} Item ( #{number_to_currency @cart.total_price} )", cart_path(@cart), class: "btn btn-link"
+
+              - else
+                = link_to "#{@cart.order_items.size} Items ( #{number_to_currency @cart.total_price} )", cart_path(@cart), class: "btn btn-link"
+
+          .col-xs-3.header-info
+            ul.nav.nav-pills.settings-links
+              - if current_user
+                p.nav-p
+                  =' link_to('Settings', edit_user_registration_path, class: "nav-link")
+                  '|
+                p.nav-p
+                  =' link_to('Orders', edit_user_registration_path, class: "nav-link")
+                '| 
+                p.nav-p
+                  = link_to "Sign out", destroy_user_session_path, :method => :delete, class: "nav-link"
+              - else
+                p.nav-p
+                  =' link_to('Sign in', new_user_session_path, class: "nav-link")
+                '| 
+                p.nav-p
+                  = link_to('Sign up', new_user_registration_path, class: "nav-link")
+      .products
+        = yield

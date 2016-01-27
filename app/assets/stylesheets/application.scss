@@ -1,0 +1,198 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require devise_bootstrap_views
+ */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+
+
+
+/* APPLICATION HTML */
+
+.container-fluid {
+  width: 800px;
+  max-width: none !important;
+}
+
+.nav {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.nav-p {
+  display: inline;
+}
+
+.nav-link {
+  text-decoration: underline;
+}
+
+.nav-links {
+  padding: 0;
+}
+
+.header-info {
+  height: 66px;
+}
+
+.header-info:last-child {
+  padding-left: 20px;
+}
+
+.header-info:nth-child(2) {
+  padding: 0;
+  width: 170px;
+}
+
+.header-info:nth-child(3) {
+  padding: 0;
+}
+
+.home-shop {
+  height: 56px;
+}
+
+.cart-img {
+  padding: 0;
+  width: 80px;
+}
+
+.image-cart {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.cart-text {
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.empty-cart {
+  margin: 10px 0 0 10px;
+}
+
+.settings-links {
+  margin: 20px 0 0 0;
+}
+
+.products {
+  margin-top: 20px;
+}
+
+
+
+
+/* HOME PAGE */
+
+.title-book {
+  font-size: 16px;
+}
+
+.description-text {
+  font-size: 13px;
+  min-height: 200px;
+  margin: 0;
+}
+
+.book-price {
+  font-size: 18px;
+  margin-top: 13px;
+  margin-left: 15px;
+}
+
+.footer-text {
+  width: 350px;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.title_with_author {
+  display: inline;
+}
+
+.title_with_author:last-child {
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.title_with_author:nth-child(2) {
+  margin-left: 10px;
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+
+
+/* SIGN IN PAGE */
+
+.panel {
+  border: none;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.facebook {
+  width: 50px;
+  margin: 0 auto;
+}
+
+.or {
+  width: 50px;
+  margin: 15px auto 0;
+  text-align: center;
+}
+
+.facebook-img {
+  width: 50px;
+  height: 50px;
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.myInput {
+  padding-left: 25px;
+}
+
+.link-input {
+  right: 20px;
+  position: absolute;
+  top: 8px;
+}
+
+label.remember_me {
+  padding: 2px 0 0 0;
+  margin: 0;
+}
+
+.remember-check-box {
+  padding: 0;
+  margin: 0;
+}
+
+.sign-up-btn {
+  margin-left: 10px;
+  text-decoration: underline;
+}
