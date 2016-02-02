@@ -1,16 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
-  let(:category) { FactoryGirl.create(:category) }
-  let(:categories) { FactoryGirl.create_list(:category, 2) }
-  let(:books) { FactoryGirl.create_list(:book, 2) }
+  let(:categories) { create_list(:category, 2) }
+  let(:books) { create_list(:book, 2) }
+  let(:category) { create(:category, books: books) }
 
   describe 'GET #show' do
-    it 'has array of categories' do
-      get :show, id: category
-      expect(assigns(:categories)).to match_array(categories)
-    end
-
     it 'has array of books' do
       get :show, id: category
       expect(assigns(:books)).to match_array(books)

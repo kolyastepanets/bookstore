@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe BooksController, type: :controller do
-  let(:book) { FactoryGirl.create(:book) }
-  let(:category) { FactoryGirl.create(:category) }
+  let(:book) { create(:book) }
+  let(:category) { create(:category) }
+  let(:books) { create_list(:book, 2) }
+  let(:categories) { create_list(:category, 2) }
 
   describe 'GET #index' do
-    let(:books) { FactoryGirl.create_list(:book, 2) }
-    let(:categories) { FactoryGirl.create_list(:category, 2) }
-
     before { get :index }
 
     it 'has array of books' do

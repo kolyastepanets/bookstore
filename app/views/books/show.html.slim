@@ -16,12 +16,13 @@ div class="row"
       div class="col-xs-2"
       div class="col-xs-2"
 
-      //div class="col-xs-4"
+      div class="col-xs-4"
         = form_tag(order_items_path(book_id: @book.id)) do
           .input-group
-            = number_field_tag(:quantity, 1, min: 1, class: 'form-control')
+            = number_field_tag(:quantity, 1, min: 1, class: 'form-control input-field-width')
             .input-group-btn
-              = hidden_field_tag :book_id, value: @book.id
+              = hidden_field_tag :book, value: @book
+              = hidden_field_tag :price, value: @book.price
               = submit_tag "Add to Cart", class: "btn btn-primary"
 
     div class="col-xs-12"
@@ -36,7 +37,7 @@ div class="row"
             | Reviews
         div class="col-xs-9"
           p class="link-add-review"
-            = link_to "Add review for this book", new_book_review_path(@book), class: "btn btn-link add-review-btn" if current_user
+            = link_to "Add review for this book", new_book_review_path(@book), class: "btn btn-link add-review-btn"
 
     div class="all-rewiews"
       - @book.reviews.each do |review|

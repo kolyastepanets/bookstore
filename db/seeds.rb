@@ -224,6 +224,342 @@ Create and optimize web graphics so they’ll download as quickly as possibles
             author_id: 1
             )
 
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
+Book.create(title: "Web Design",
+            description: %{
+                                        A two-book set for web designers and front-end developers
+                    This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and
+                    JavaScript & jQuery: Interactive Front-End Development.
+                    Together these two books form an ideal platform for anyone who wants to master HTML and
+                    CSS before stepping up to JavaScript and jQuery.
+
+                    HTML & CSS covers structure, text, links, images, tables, forms, useful options, adding
+                    style with CSS, fonts, colors, thinking in boxes, styling lists and tables, layouts, grids,
+                    and even SEO, Google analytics, ftp, and HTML5. JavaScript & jQuery offers an excellent
+                    combined introduction to these two technologies using a clear and simple visual approach
+                    using diagrams, infographics, and photographs.
+
+                    A handy two-book set that uniquely combines related technologies
+                    Highly visual format and accessible language makes these books highly effective learning tools
+                    Perfect for beginning web designers and front-end developers
+                              },
+            books_in_stock: 14,
+            price: 30.53,
+            category_id: 3,
+            author_id: 1
+            )
+
 Category.create(title: "Ruby", id: 1)
 
 Category.create(title: "HTML", id: 2)
@@ -239,3 +575,4 @@ Author.create(firstname: "David",
             lastname: "Hannerneson",
             id: 2
             )
+

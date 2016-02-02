@@ -8,6 +8,6 @@ RSpec.describe Book, type: :model do
   it { should belong_to(:author) }
   it { should belong_to(:category) }
 
-  # it { should have_many(:order_items)}
-  # it { should have_many(:reviews).dependent(:destroy) }
+  it { should have_many(:order_items)}
+  it { should have_many(:reviews).dependent(:destroy) }
 end

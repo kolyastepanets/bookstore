@@ -107,6 +107,7 @@ body {
 
 
 
+
 /* HOME PAGE */
 
 .title-book {
@@ -317,6 +318,17 @@ th.created-review {
   text-decoration: underline;
 }
 
+/*.form-control {
+  width: 70px;
+}*/
+
+.form-control.input-field-width {
+  width: 70px;
+}
+
+
+
+
 
 
 
@@ -360,4 +372,57 @@ th.created-review {
 
 .whole-title-new-review {
   margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+/* ORDER SHOW */
+
+table.table {
+  margin: 0;
+}
+
+.table-title {
+  text-align: center;
+}
+
+tr.line-in-cart:last-child {
+  border-bottom: 2px solid black;
+}
+
+.book-title-in-cart {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.book-price-in-cart {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.cross-in-cart {
+  width: 10px;
+}
+
+.p-book-price-in-cart {
+  display: inline;
+}
+
+.p-book-price-in-cart:first-child {
+  margin-right: 10px;
+}
+
+.p-book-price-in-cart:last-child {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.empty-rignt {
+  width: 25px;
 }
