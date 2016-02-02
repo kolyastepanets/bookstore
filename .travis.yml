@@ -1,0 +1,16 @@
+language: ruby
+addons:
+  postgresql: "9.4"
+rvm:
+  - 2.1.2
+gemfile: Gemfile
+before_install:
+  - "echo 'gem: --no-document' > ~/.gemrc"
+  - "echo '--colour' > ~/.rspec"
+  - sh -e /etc/init.d/xvfb start
+before_script:
+  - psql -c 'create database bookstore_test;' -U postgres
+  - cp config/database.yml.travis  config/database.yml
+script:
+  - bundle exec rake db:setup
+  - bundle exec rspec spec

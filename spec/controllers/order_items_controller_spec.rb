@@ -5,7 +5,6 @@ RSpec.describe OrderItemsController, type: :controller do
   let(:user) { create(:user) }
   let(:book) { create(:book) }
   let!(:order_item) { create(:order_item, book: book) }
-  # let(:quantity) { 1 }
 
   describe 'POST #create' do
     before { sign_in(user) }

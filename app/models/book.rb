@@ -6,4 +6,7 @@ class Book < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
   has_many :order_items
+
+  scope :bestsellers, -> { Book.select("books.*, sum(order_items.quantity) as total").joins(:order_items).group(:id).order('total DESC').limit(3) }
+
 end
