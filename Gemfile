@@ -56,6 +56,7 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 2.5'
+  gem "codeclimate-test-reporter"
 end
 
 gem 'rails_12factor', group: :production
