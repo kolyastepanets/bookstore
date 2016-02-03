@@ -4,12 +4,12 @@ div class="row"
       p
         | SHOP
     div class="col-xs-12"
-      div class="row row-eq-height-xs"
+      div class="row"
         - @books.each do |book|
           div class="col-sm-4 col-lg-4 col-md-4"
-            div class="product"
-              = link_to book_path(book)
-                = image_tag("default1.png")
+            = link_to book_path(book)
+              = image_tag("default1.png")
+            div class='caption'
               div class="link-button"
                 = link_to truncate(book.title, length: 45), book_path(book)
               div class="price-product"

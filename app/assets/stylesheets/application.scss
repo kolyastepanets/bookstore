@@ -162,6 +162,7 @@ body {
 .carousel-control.left, .carousel-control.right {
   background-image: none;
   width: 50px;
+  /*background-color: black;*/
 }
 
 .image-narrow {
@@ -182,6 +183,21 @@ body {
 .price-and-btn {
   margin-top: 15px;
 }
+
+span.glyphicon.glyphicon-triangle-left, span.glyphicon.glyphicon-triangle-right {
+  color: black;
+  margin-top: 100px;
+}
+
+.footer {
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+
+
+
+
 
 
 
@@ -278,6 +294,11 @@ label.remember_me {
   font-size: 14px;
 }
 
+.caption {
+  height: 120px;
+}
+
+/*
 .row-eq-height-xs {
   display: -webkit-box;
   display: -webkit-flex;
@@ -285,7 +306,7 @@ label.remember_me {
   display:  flex;
   flex-direction: initial;
   flex-wrap: wrap;
-}
+}*/
 
 
 
