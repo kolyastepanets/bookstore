@@ -12,7 +12,7 @@ class OrderItemsController < ApplicationController
     # Rails.logger.info(@order_item.errors.inspect)
     # Rails.logger.info(@order.errors.inspect)
     if @order_item.save
-      redirect_to @order
+      redirect_to cart_path(@order)
     else
       redirect_to book_path(params[:book_id])
     end
@@ -22,14 +22,14 @@ class OrderItemsController < ApplicationController
     @order = current_user.orders.in_progress.last
     order_item = @order.order_items.find(params[:id])
     order_item.update_attributes(order_item_params)
-    redirect_to @order
+    redirect_to cart_path(@order)
   end
 
   def destroy
     @order = current_user.orders.in_progress.last
     order_item = @order.order_items.find(params[:id])
     order_item.destroy
-    redirect_to @order
+    redirect_to cart_path(@order)
   end
 
   private

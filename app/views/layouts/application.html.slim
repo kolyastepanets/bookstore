@@ -33,9 +33,9 @@ html
                     p class="empty-cart"
                       | (Empty Cart)
                   - elsif @order.order_items.size == 1
-                    = link_to "#{@order.order_items.size} Item ( #{number_to_currency @order.total_price} )", order_path(@order), class: "btn btn-link"
+                    = link_to "#{@order.order_items.size} Item ( #{number_to_currency @order.total_price} )", cart_path(@order), class: "btn btn-link"
                   - else
-                    = link_to "#{@order.order_items.size} Items ( #{number_to_currency @order.total_price} )", order_path(@order), class: "btn btn-link"
+                    = link_to "#{@order.order_items.size} Items ( #{number_to_currency @order.total_price} )", cart_path(@order), class: "btn btn-link"
                 - else
                   p class="empty-cart"
                     | (Empty Cart)
@@ -50,7 +50,7 @@ html
                   =' link_to('Settings', edit_user_registration_path, class: "nav-link")
                   '|
                 p.nav-p
-                  =' link_to('Orders', edit_user_registration_path, class: "nav-link")
+                  =' link_to('Orders', orders_path, class: "nav-link")
                 '| 
                 p.nav-p
                   = link_to "Sign out", destroy_user_session_path, :method => :delete, class: "nav-link"

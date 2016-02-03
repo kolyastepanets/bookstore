@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :authors
   resources :categories
   resources :order_items
+
   resources :orders
+  get '/orders/cart/:id', to: 'orders#cart', as: 'cart'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
