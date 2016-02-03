@@ -89,6 +89,7 @@ body {
 
 
 
+
 /* HOME PAGE */
 
 .title-book {
@@ -107,10 +108,6 @@ body {
 
 .book-price {
   font-size: 18px;
-}
-
-.price-and-btn {
-
 }
 
 .footer-text {
@@ -175,7 +172,13 @@ span.glyphicon.glyphicon-triangle-left, span.glyphicon.glyphicon-triangle-right 
   font-weight: bold;
 }
 
-
+.carousel-indicators {
+  background-color: lightgray;
+  margin-left: 270px;
+  width: 50px;
+  padding-top: 5px;
+  margin-bottom: -15px;
+}
 
 
 
