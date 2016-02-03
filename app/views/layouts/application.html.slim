@@ -3,9 +3,8 @@ html
   head
     title
       | The Bookstore
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = stylesheet_link_tag    'custom', 'bootstrap', 'shop-homepage', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'bootstrap', 'all-app', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'jquery', 'bootstrap', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body

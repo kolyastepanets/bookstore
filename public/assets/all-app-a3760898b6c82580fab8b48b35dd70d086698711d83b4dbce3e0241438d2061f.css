@@ -1,0 +1,483 @@
+/* line 2, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+/* APPLICATION HTML */
+/* line 15, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.container-fluid {
+  width: 800px;
+  max-width: none !important;
+}
+
+/* line 20, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.nav {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+/* line 25, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.nav-p {
+  display: inline;
+}
+
+/* line 29, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.nav-link {
+  text-decoration: underline;
+}
+
+/* line 33, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.nav-links {
+  padding: 0;
+}
+
+/* line 37, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.header-info {
+  height: 66px;
+}
+
+/* line 41, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.header-info:last-child {
+  padding-left: 20px;
+}
+
+/* line 45, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.header-info:nth-child(2) {
+  padding: 0;
+  width: 170px;
+}
+
+/* line 50, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.header-info:nth-child(3) {
+  padding: 0;
+}
+
+/* line 54, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.home-shop {
+  height: 56px;
+}
+
+/* line 58, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.cart-img {
+  padding: 0;
+  width: 80px;
+}
+
+/* line 63, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.image-cart {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+/* line 68, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.cart-text {
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+/* line 73, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.empty-cart {
+  margin: 10px 0 0 10px;
+}
+
+/* line 77, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.settings-links {
+  margin: 20px 0 0 0;
+}
+
+/* line 81, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.products {
+  margin-top: 20px;
+}
+
+/* HOME PAGE */
+/* line 94, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.title-book {
+  font-size: 16px;
+}
+
+/* line 98, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.description-text-home-page {
+  font-size: 13px;
+  min-height: 200px;
+  margin: 0 0 0 20px;
+}
+
+/* line 104, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.image-and-text {
+  margin-top: 15px;
+}
+
+/* line 108, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.book-price {
+  font-size: 18px;
+}
+
+/* line 116, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.footer-text {
+  width: 350px;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+/* line 123, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.title_with_author {
+  display: inline;
+}
+
+/* line 127, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.title_with_author:last-child {
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+/* line 132, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.title_with_author:nth-child(2) {
+  margin-left: 10px;
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+/* line 138, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.item {
+  width: 670px;
+  margin-left: 50px;
+}
+
+/* line 143, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.carousel-control.left, .carousel-control.right {
+  background-image: none;
+  width: 50px;
+  /*background-color: black;*/
+}
+
+/* line 149, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.image-narrow {
+  width: 50px;
+  margin-top: 90px;
+}
+
+/* line 154, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.col-price-book-on-home {
+  padding: 0;
+  margin-left: 35px;
+  margin-top: 5px;
+}
+
+/* line 160, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.add-to-cart-btn-home-page {
+  padding: 0;
+}
+
+/* line 164, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.price-and-btn {
+  margin-top: 15px;
+}
+
+/* line 168, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+span.glyphicon.glyphicon-triangle-left, span.glyphicon.glyphicon-triangle-right {
+  color: black;
+  margin-top: 100px;
+}
+
+/* line 173, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.footer {
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+/* SIGN IN PAGE */
+/* line 194, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.panel {
+  border: none;
+  width: 40%;
+  margin: 0 auto;
+}
+
+/* line 200, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.facebook {
+  width: 50px;
+  margin: 0 auto;
+}
+
+/* line 205, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.or {
+  width: 50px;
+  margin: 15px auto 0;
+  text-align: center;
+}
+
+/* line 211, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.facebook-img {
+  width: 50px;
+  height: 50px;
+}
+
+/* line 216, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.inputContainer {
+  position: relative;
+}
+
+/* line 220, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.myInput {
+  padding-left: 25px;
+}
+
+/* line 224, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.link-input {
+  right: 20px;
+  position: absolute;
+  top: 8px;
+}
+
+/* line 230, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+label.remember_me {
+  padding: 2px 0 0 0;
+  margin: 0;
+}
+
+/* line 235, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.remember-check-box {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 240, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.sign-up-btn {
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+/* BOOKS INDEX */
+/* line 254, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.title-book {
+  font-size: 16px;
+}
+
+/* line 258, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.product {
+  margin-bottom: 20px;
+}
+
+/* line 262, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.link-button {
+  text-align: center;
+  font-size: 16px;
+}
+
+/* line 267, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.price-product {
+  text-align: center;
+  color: black;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+/* line 274, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.category {
+  font-size: 14px;
+}
+
+/* line 278, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.caption {
+  height: 120px;
+}
+
+/*
+.row-eq-height-xs {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:  flex;
+  flex-direction: initial;
+  flex-wrap: wrap;
+}*/
+/* BOOKS SHOW */
+/* line 298, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.title-book {
+  font-size: 16px;
+}
+
+/* line 302, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.book-price-on-book-page {
+  font-size: 20px;
+  margin-top: 12px;
+}
+
+/* line 307, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.description-text {
+  font-size: 13px;
+  min-height: 200px;
+  margin: 0;
+}
+
+/* line 313, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.reviews {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+/* line 318, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.div-review {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 323, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.reviews-title, .link-add-review {
+  margin: 0;
+}
+
+/* line 327, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.add-review-btn {
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* line 332, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.the-whole-review {
+  margin-bottom: 30px;
+}
+
+/* line 336, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+th.book-rating {
+  padding: 0;
+  width: 120px;
+  margin: 0;
+}
+
+/* line 342, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+th.title-review {
+  font-size: 14px;
+  width: 1%;
+  white-space: nowrap;
+}
+
+/* line 348, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+th.created-review {
+  font-size: 14px;
+  color: #777777;
+}
+
+/* line 353, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.link-to-customer {
+  margin-bottom: 10px;
+}
+
+/* line 357, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.link {
+  text-decoration: underline;
+}
+
+/*.form-control {
+  width: 70px;
+}*/
+/* line 365, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.form-control.input-field-width {
+  width: 70px;
+}
+
+/* REVIEW NEW */
+/* line 378, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.title-review-for-new-page {
+  margin: 0;
+  padding: 0;
+  width: 170px;
+}
+
+/* line 384, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.book-title-for-new-review {
+  margin: 0;
+  padding: 3px 0;
+  font-size: 17px;
+  text-decoration: underline;
+}
+
+/* line 391, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.review-field {
+  margin-bottom: 10px;
+}
+
+/* line 395, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.text-beside-btn-review {
+  display: inline;
+  margin-left: 10px;
+}
+
+/* line 400, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.link-beside-btn-review {
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+/* line 405, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.select-for-rating {
+  margin-bottom: 10px;
+}
+
+/* line 409, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.label-rating {
+  margin-right: 10px;
+}
+
+/* line 413, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.whole-title-new-review {
+  margin-bottom: 20px;
+}
+
+/* ORDER SHOW */
+/* line 427, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+table.table {
+  margin: 0;
+}
+
+/* line 431, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.table-title {
+  text-align: center;
+}
+
+/* line 435, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+tr.line-in-cart:last-child {
+  border-bottom: 2px solid black;
+}
+
+/* line 439, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.book-title-in-cart {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/* line 444, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.book-price-in-cart {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/* line 449, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.cross-in-cart {
+  width: 10px;
+}
+
+/* line 453, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.p-book-price-in-cart {
+  display: inline;
+}
+
+/* line 457, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.p-book-price-in-cart:first-child {
+  margin-right: 10px;
+}
+
+/* line 461, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.p-book-price-in-cart:last-child {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/* line 466, /home/nikolay/work/ruby_garage/homework_model/bookstore/bookstore/vendor/assets/stylesheets/all-app.css.scss */
+.empty-rignt {
+  width: 25px;
+}

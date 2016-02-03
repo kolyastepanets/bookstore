@@ -26,8 +26,8 @@ gem 'devise'
 gem 'aasm'
 gem 'slim-rails'
 gem 'kaminari'
-
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'rails_12factor', group: :production
+# gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise-bootstrap-views'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -58,5 +58,3 @@ group :test do
   gem 'shoulda-matchers', '~> 2.5'
   gem "codeclimate-test-reporter"
 end
-
-gem 'rails_12factor', group: :production
