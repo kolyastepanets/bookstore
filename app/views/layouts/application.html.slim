@@ -18,9 +18,9 @@ html
           .col-xs-3.header-info
             .home-shop
               ul.nav.nav-pills
-                li[role="presentation"]
+                li{role="presentation", class= "#{ "active" if params[:controller] == 'static_pages' }"}
                   = link_to 'Home', root_path
-                li[role="presentation"]
+                li{role="presentation", class= "#{ "active" if params[:controller] == 'books' }"}
                   = link_to 'Shop', books_path
 
           .col-xs-3.header-info
