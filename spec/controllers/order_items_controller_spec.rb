@@ -45,22 +45,22 @@ RSpec.describe OrderItemsController, type: :controller do
   let!(:order_item1) { create(:order_item, book: book1) }
   let!(:order) { create(:order, order_items: [order_item, order_item1], user: user) }
 
-  describe 'PATCH #update' do
-    before { sign_in(user) }
-    context "with valid attributes" do
-      it "changes the order_item's quantity" do
-        patch :update, id: order_item, order_id: order, order_item: { quantity: 10 }
-        order_item.reload
-        expect(order_item.quantity).to eq 10
-      end
+  # describe 'PATCH #update' do
+  #   before { sign_in(user) }
+  #   context "with valid attributes" do
+  #     it "changes the order_item's quantity" do
+  #       patch :update, id: order_item, order_id: order, order_item: { quantity: 10 }
+  #       order_item.reload
+  #       expect(order_item.quantity).to eq 10
+  #     end
 
-      it 'redirect to order' do
-        patch :update, id: order_item, book_id: book, order_id: order, order_item: attributes_for(:order_item)
-        expect(response).to redirect_to cart_path(order)
-      end
-    end
+  #     it 'redirect to order' do
+  #       patch :update, id: order_item, book_id: book, order_id: order, order_item: attributes_for(:order_item)
+  #       expect(response).to redirect_to cart_path(order)
+  #     end
+  #   end
 
-  end
+  # end
 
   describe 'DELETE #destroy' do
     before { sign_in(user) }

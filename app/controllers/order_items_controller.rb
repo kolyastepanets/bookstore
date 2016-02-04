@@ -18,13 +18,6 @@ class OrderItemsController < ApplicationController
     end
   end
 
-  def update
-    @order = current_user.orders.in_progress.last
-    order_item = @order.order_items.find(params[:id])
-    order_item.update_attributes(order_item_params)
-    redirect_to cart_path(@order)
-  end
-
   def destroy
     @order = current_user.orders.in_progress.last
     order_item = @order.order_items.find(params[:id])

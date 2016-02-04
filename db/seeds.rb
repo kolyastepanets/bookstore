@@ -8,23 +8,28 @@
 Book.delete_all
 Category.delete_all
 Author.delete_all
+User.delete_all
+# Country.delete_all
 
 Book.create(title: "The Ruby Programming Language",
             description: %{
-                The Ruby Programming Language is the authoritative guide to Ruby and provides comprehensive coverage of versions 1.8 and 1.9 of the language. It was written (and illustrated!) by an all-star team:
-
-David Flanagan, bestselling author of programming language "bibles" (including JavaScript: The Definitive Guide and Java in a Nutshell) and committer to the Ruby Subversion repository.
-
-
-Yukihiro "Matz" Matsumoto, creator, designer and lead developer of Ruby and author of Ruby in a Nutshell, which has been expanded and revised to become this book.
-
-
-why the lucky stiff, artist and Ruby programmer extraordinaire.
-This book begins with a quick-start tutorial to the language, and then explains the language in detail from the bottom up: from lexical and syntactic structure to datatypes to expressions and statements and on through methods, blocks, lambdas, closures, classes and modules.
-
-The book also includes a long and thorough introduction to the rich API of the Ruby platform, demonstrating -- with heavily-commented example code -- Ruby's facilities for text processing, numeric manipulation, collections, input/output, networking, and concurrency. An entire chapter is devoted to Ruby's metaprogramming capabilities.
-
-The Ruby Programming Language documents the Ruby language definitively but without the formality of a language specification. It is written for experienced programmers who are new to Ruby, and for current Ruby programmers who want to challenge their understanding and increase their mastery of the language.
+                The Ruby Programming Language is the authoritative guide to Ruby and provides
+                comprehensive coverage of versions 1.8 and 1.9 of the language. It was written (and illustrated!) by an all-star team:
+                David Flanagan, bestselling author of programming language "bibles" (including JavaScript:
+                The Definitive Guide and Java in a Nutshell) and committer to the Ruby Subversion repository.
+                Yukihiro "Matz" Matsumoto, creator, designer and lead developer of Ruby and author of Ruby in a Nutshell,
+                which has been expanded and revised to become this book.
+                why the lucky stiff, artist and Ruby programmer extraordinaire.
+                This book begins with a quick-start tutorial to the language, and then explains the language in detail from
+                the bottom up: from lexical and syntactic structure to datatypes to expressions and statements and on through
+                methods, blocks, lambdas, closures, classes and modules.
+                The book also includes a long and thorough introduction to the rich API of the Ruby platform,
+                demonstrating -- with heavily-commented example code -- Ruby's facilities for text processing,
+                numeric manipulation, collections, input/output, networking, and concurrency. An entire chapter is devoted to
+                Ruby's metaprogramming capabilities.
+                The Ruby Programming Language documents the Ruby language definitively but without the formality of a language
+                specification. It is written for experienced programmers who are new to Ruby, and for current Ruby programmers who
+                want to challenge their understanding and increase their mastery of the language.
               },
             books_in_stock: 5,
             price: 16,
@@ -88,15 +93,16 @@ Book.create(title: "The Well-Grounded Rubyist",
                     includes coverage of new Ruby features such as keyword arguments, lazy enumerators,
                     and Module#prepend, along with updated information on new and changed core classes and methods.
 
-What's Inside
+                    What's Inside
 
-Clear explanations of Ruby concepts
-Numerous simple examples
-Updated for Ruby 2.1
-Prepares you to use Ruby anywhere for any purpose
-About the Author
+                    Clear explanations of Ruby concepts
+                    Numerous simple examples
+                    Updated for Ruby 2.1
+                    Prepares you to use Ruby anywhere for any purpose
+                    About the Author
 
-David A. Black is an internationally known Ruby developer, author, trainer, speaker, event organizer, and founder of Ruby Central, as well as a Lead Consultant at Cyrus Innovation.
+                    David A. Black is an internationally known Ruby developer, author, trainer, speaker, event organizer,
+                    and founder of Ruby Central, as well as a Lead Consultant at Cyrus Innovation.
                               },
             books_in_stock: 9,
             price: 32.99,
@@ -107,13 +113,23 @@ David A. Black is an internationally known Ruby developer, author, trainer, spea
 Book.create(title: "Ruby on Rails Tutorial: Learn Web Development with Rails (3rd Edition) (Addison-Wesley Professional Ruby)",
             description: %{
                     “Ruby on Rails™ Tutorial by Michael Hartl has become a must-read for developers learning how to build Rails apps.”
-—Peter Cooper, Editor of Ruby Inside
- 
-Used by sites as diverse as Twitter, GitHub, Disney, and the Yellow Pages, Ruby on Rails is one of the most popular frameworks for developing web applications, but it can be challenging to learn and use. Whether you’re new to web development or new only to Rails, Ruby on Rails™ Tutorial, Third Edition, is the solution.
- 
-Best-selling author and leading Rails developer Michael Hartl teaches Rails by guiding you through the development of three example applications of increasing sophistication, focusing on the fundamental techniques in web development needed for virtually any kind of application. The updates to this edition include simplified installation via a standard development environment in the cloud, use of the default Rails stack throughout, a light-weight testing approach, an all-new section on image upload, and an all-new chapter on account activation and password resets, including sending email with Rails.
- 
-This indispensable guide provides integrated tutorials not only for Rails, but also for the essential Ruby, HTML, CSS, and SQL skills you’ll need when developing web applications. Hartl explains how each new technique solves a real-world problem, and then he demonstrates it with bite-sized code that’s simple enough to understand, yet novel enough to be useful. Whatever your previous web development experience, this book will guide you to true Rails mastery.
+                    —Peter Cooper, Editor of Ruby Inside
+                    Used by sites as diverse as Twitter, GitHub, Disney, and the Yellow Pages, Ruby on Rails is one of the
+                    most popular frameworks for developing web applications, but it can be challenging to learn and use.
+                    Whether you’re new to web development or new only to Rails, Ruby on Rails™ Tutorial, Third Edition, is the solution.
+
+                    Best-selling author and leading Rails developer Michael Hartl teaches Rails by guiding you through the
+                    development of three example applications of increasing sophistication, focusing on the fundamental techniques
+                    in web development needed for virtually any kind of application. The updates to this edition include simplified
+                    installation via a standard development environment in the cloud, use of the default Rails stack throughout,
+                    a light-weight testing approach, an all-new section on image upload, and an all-new chapter on account activation
+                    and password resets, including sending email with Rails.
+
+                    This indispensable guide provides integrated tutorials not only for Rails, but also for the essential Ruby,
+                    HTML, CSS, and SQL skills you’ll need when developing web applications. Hartl explains how each new technique
+                    solves a real-world problem, and then he demonstrates it with bite-sized code that’s simple enough to understand,
+                    yet novel enough to be useful. Whatever your previous web development experience, this book will guide you to
+                    true Rails mastery.
                               },
             books_in_stock: 24,
             price: 29.84,
@@ -124,12 +140,19 @@ This indispensable guide provides integrated tutorials not only for Rails, but a
 Book.create(title: "Practical Object-Oriented Design in Ruby: An Agile Primer (Addison-Wesley Professional Ruby) 1st ",
             description: %{
                     The Complete Guide to Writing More Maintainable, Manageable, Pleasing, and Powerful Ruby Applications
- 
-Ruby’s widely admired ease of use has a downside: Too many Ruby and Rails applications have been created without concern for their long-term maintenance or evolution. The Web is awash in Ruby code that is now virtually impossible to change or extend. This text helps you solve that problem by using powerful real-world object-oriented design techniques, which it thoroughly explains using simple and practical Ruby examples.
- 
-Sandi Metz has distilled a lifetime of conversations and presentations about object-oriented design into a set of Ruby-focused practices for crafting manageable, extensible, and pleasing code. She shows you how to build new applications that can survive success and repair existing applications that have become impossible to change. Each technique is illustrated with extended examples, all downloadable from the companion Web site, poodr.info.
- 
-The first title to focus squarely on object-oriented Ruby application design, Practical Object-Oriented Design in Ruby will guide you to superior outcomes, whatever your previous Ruby experience. Novice Ruby programmers will find specific rules to live by; intermediate Ruby programmers will find valuable principles they can flexibly interpret and apply; and advanced Ruby programmers will find a common language they can use to lead development and guide their colleagues.
+                    Ruby’s widely admired ease of use has a downside: Too many Ruby and Rails applications have been created
+                    without concern for their long-term maintenance or evolution. The Web is awash in Ruby code that is
+                    now virtually impossible to change or extend. This text helps you solve that problem by using powerful
+                    real-world object-oriented design techniques, which it thoroughly explains using simple and practical Ruby examples.
+                    Sandi Metz has distilled a lifetime of conversations and presentations about object-oriented design into a set of
+                    Ruby-focused practices for crafting manageable, extensible, and pleasing code. She shows you how to build
+                    new applications that can survive success and repair existing applications that have become impossible to change.
+                    Each technique is illustrated with extended examples, all downloadable from the companion Web site, poodr.info.
+                    The first title to focus squarely on object-oriented Ruby application design, Practical Object-Oriented Design in
+                    Ruby will guide you to superior outcomes, whatever your previous Ruby experience. Novice Ruby programmers will find
+                    specific rules to live by; intermediate Ruby programmers will find valuable principles they can flexibly interpret
+                    and apply; and advanced Ruby programmers will find a common language they can use to lead development and
+                    guide their colleagues.
                               },
             books_in_stock: 5,
             price: 28.41,
@@ -139,11 +162,14 @@ The first title to focus squarely on object-oriented Ruby application design, Pr
 
 Book.create(title: "Beginning Ruby: From Novice to Professional (Expert's Voice in Open Source)",
             description: %{
-                    Based on the bestselling first edition, Beginning Ruby: From Novice to Professional, Second Edition is the leading guide for every type of reader who wants to learn Ruby from the ground up.
-
-The new edition of this book provides the same excellent introduction to Ruby as the first edition plus updates for the newest version of Ruby, including the addition of the Sinatra and Ramaze web application frameworks and a chapter on GUI development so developers can take advantage of these new trends.
-
-Beginning Ruby starts by explaining the principles behind object-oriented programming and within a few chapters builds toward creating a full Ruby application. By the end of the book, in addition to in-depth knowledge of Ruby, you'll also have basic understanding of many ancillary technologies such as SQL, XML, web frameworks, and networking.
+                    Based on the bestselling first edition, Beginning Ruby: From Novice to Professional,
+                    Second Edition is the leading guide for every type of reader who wants to learn Ruby from the ground up.
+                    The new edition of this book provides the same excellent introduction to Ruby as the first edition plus updates
+                    for the newest version of Ruby, including the addition of the Sinatra and Ramaze web application frameworks
+                    and a chapter on GUI development so developers can take advantage of these new trends.
+                    Beginning Ruby starts by explaining the principles behind object-oriented programming and within a few chapters
+                    builds toward creating a full Ruby application. By the end of the book, in addition to in-depth knowledge of
+                    Ruby, you'll also have basic understanding of many ancillary technologies such as SQL, XML, web frameworks, and networking.
                               },
             books_in_stock: 14,
             price: 24.34,
@@ -154,19 +180,19 @@ Beginning Ruby starts by explaining the principles behind object-oriented progra
 Book.create(title: "HTML and CSS: Design and Build Websites",
             description: %{
                     A full-color introduction to the basics of HTML and CSS from the publishers of Wrox!
-Every day, more and more people want to learn some HTML and CSS. Joining the professional web designers
-and programmers are new audiences who need to know a little bit of code at work (update a content
-  management system or e-commerce store) and those who want to make their personal blogs more attractive.
-Many books teaching HTML and CSS are dry and only written for those who want to become programmers, which
-is why this book takes an entirely new approach.
+                    Every day, more and more people want to learn some HTML and CSS. Joining the professional web designers
+                    and programmers are new audiences who need to know a little bit of code at work (update a content
+                      management system or e-commerce store) and those who want to make their personal blogs more attractive.
+                    Many books teaching HTML and CSS are dry and only written for those who want to become programmers, which
+                    is why this book takes an entirely new approach.
 
-Introduces HTML and CSS in a way that makes them accessible to everyone—hobbyists, students, and
-professionals—and it’s full-color throughout
-Utilizes information graphics and lifestyle photography to explain the topics in a simple way that is engaging
-Boasts a unique structure that allows you to progress through the chapters from beginning to end or just
-dip into topics of particular interest at your leisure
-This educational book is one that you will enjoy picking up, reading, then referring back to. It will make
-you wish other technical topics were presented in such a simple, attractive and engaging way!
+                    Introduces HTML and CSS in a way that makes them accessible to everyone—hobbyists, students, and
+                    professionals—and it’s full-color throughout
+                    Utilizes information graphics and lifestyle photography to explain the topics in a simple way that is engaging
+                    Boasts a unique structure that allows you to progress through the chapters from beginning to end or just
+                    dip into topics of particular interest at your leisure
+                    This educational book is one that you will enjoy picking up, reading, then referring back to. It will make
+                    you wish other technical topics were presented in such a simple, attractive and engaging way!
                               },
             books_in_stock: 14,
             price: 35.53,
@@ -576,3 +602,24 @@ Author.create(firstname: "David",
             id: 2
             )
 
+User.create(firstname: "Sam",
+            lastname: "Serious",
+            id: 1,
+            email: "test@test.com",
+            password: 12345678
+            )
+
+User.create(firstname: "Sam22",
+            lastname: "Serious22",
+            id: 2,
+            email: "test1@test.com",
+            password: 12345678
+            )
+
+# Country.create(name: "Ukraine",
+#             id: 1
+#             )
+
+# Country.create(name: "GB",
+#             id: 2
+#             )

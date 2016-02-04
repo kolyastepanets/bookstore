@@ -429,7 +429,7 @@ th.created-review {
 
 
 
-/* ORDER SHOW */
+/* ORDER CART */
 
 table.table {
   margin: 0;
@@ -473,3 +473,40 @@ tr.line-in-cart:last-child {
 .empty-rignt {
   width: 25px;
 }
+
+
+
+
+
+
+
+
+
+
+/* ORDER ADDRESS */
+
+.checkout {
+  margin: 0;
+}
+
+.link-in-order:first-child {
+  margin: 0;
+}
+
+.link-in-order {
+  margin-left: 10px;
+}
+
+.active-link {
+  text-decoration: underline;
+}
+
+.columns-addresses {
+  margin-top: 20px;
+}
+
+.address-input-field {
+  margin-top: 20px;
+}
+
+
