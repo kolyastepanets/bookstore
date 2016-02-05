@@ -12,7 +12,13 @@ class ApplicationController < ActionController::Base
   end
 
   def set_order
-    @order = current_user.orders.in_progress.last if current_user
+    if current_user
+      if current_user.orders.in_progress.last
+        @order = current_user.orders.in_progress.last
+      else
+        @order = current_user.orders.create
+      end
+    end
   end
 
   def store_location
