@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129092117) do
+ActiveRecord::Schema.define(version: 20160207115321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "type"
+    t.integer  "country_id"
+    t.integer  "zip"
+    t.integer  "phone"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
 
   create_table "authors", force: :cascade do |t|
     t.string   "firstname"
@@ -44,6 +61,11 @@ ActiveRecord::Schema.define(version: 20160129092117) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "checkouts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.decimal  "price"
     t.integer  "quantity"
@@ -58,12 +80,13 @@ ActiveRecord::Schema.define(version: 20160129092117) do
 
   create_table "orders", force: :cascade do |t|
     t.decimal  "total_price"
-    t.date     "completed_date", default: '2016-01-29'
+    t.date     "completed_date", default: '2016-02-05'
     t.string   "aasm_state"
     t.integer  "user_id"
     t.integer  "credit_card_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.integer  "checkout_id"
   end
 
   add_index "orders", ["credit_card_id"], name: "index_orders_on_credit_card_id", using: :btree

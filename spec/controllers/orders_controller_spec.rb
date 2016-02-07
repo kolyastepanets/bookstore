@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe OrdersController, type: :controller do
   let(:user) { create(:user) }
   let(:order) { create(:order, user: user) }
-  let(:orders) { create_list(:order, 2, user: user) }
+  let!(:orders) { create_list(:order, 2, user: user) }
 
   describe 'GET #index' do
     before { sign_in(user) }

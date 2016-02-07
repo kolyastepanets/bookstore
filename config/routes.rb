@@ -12,6 +12,13 @@ Rails.application.routes.draw do
 
   resources :carts
   resources :orders
+  resources :addresses
+  # resources :checkout
+
+  get 'checkouts/address'
+  get 'checkouts/delivery'
+  patch 'checkouts/update_address'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -5,9 +5,15 @@ class Order < ActiveRecord::Base
   validates :completed_date, :aasm_state, :user_id, presence: true
 
   belongs_to :user
+  belongs_to :checkout
   # belongs_to :credit_card
 
   has_many :order_items, dependent: :destroy
+  has_one :shipping_address, as: :addressable, class_name: "ShippingAddress"
+  accepts_nested_attributes_for :shipping_address
+
+  has_one :billing_address, as: :addressable, class_name: "BillingAddress"
+  accepts_nested_attributes_for :billing_address
 
   aasm do
     state :in_progress, initial: true
@@ -35,6 +41,14 @@ class Order < ActiveRecord::Base
 
   def total_price
     order_items.to_a.sum { |item| item.total_price }
+  end
+
+  def building_billing_address
+    build_billing_address unless billing_address
+  end
+
+  def building_shipping_address
+    build_shipping_address unless shipping_address
   end
 
   private

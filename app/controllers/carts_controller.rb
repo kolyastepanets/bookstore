@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_order
 
   def show
   end
@@ -12,9 +13,19 @@ class CartsController < ApplicationController
 
   def destroy
     @order.destroy
-    respond_to do |format|
-      format.html { redirect_to books_path,
-        notice: 'Your cart is empty' }
-    end
+    @checkout.destroy unless @checkout.nil?
+    redirect_to books_path
   end
+
+  private
+
+    def set_order
+      if current_user.orders.in_progress.last
+        @order = current_user.orders.in_progress.last
+      end
+    end
+
+    def set_checkout
+      @checkout ||= Checkout.last
+    end
 end
