@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CheckoutsController, type: :controller do
   let(:user) { create(:user) }
-  let(:order) { create(:order) }
+  let!(:order) { create(:order) }
   let!(:checkout) { create(:checkout, order: order) }
 
   describe 'GET #address' do
@@ -13,7 +13,7 @@ RSpec.describe CheckoutsController, type: :controller do
       expect(assigns(:checkout)).to eq checkout
     end
 
-    it 'render index' do
+    it 'render address' do
       expect(response).to render_template :address
     end
   end

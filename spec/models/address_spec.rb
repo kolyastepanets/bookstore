@@ -5,6 +5,7 @@ RSpec.describe Address, type: :model do
   it { should validate_presence_of(:city) }
   it { should validate_presence_of(:phone) }
   it { should validate_presence_of(:street) }
+  it { should validate_presence_of(:country) }
   it { should validate_presence_of(:last_name) }
   it { should validate_presence_of(:first_name) }
 
@@ -16,4 +17,6 @@ RSpec.describe Address, type: :model do
 
     expect(address).to be_valid
   end
+
+  it { should belong_to(:addressable) }
 end

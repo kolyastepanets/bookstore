@@ -9,7 +9,7 @@ Book.delete_all
 Category.delete_all
 Author.delete_all
 User.delete_all
-# Country.delete_all
+Country.delete_all
 
 Book.create(title: "The Ruby Programming Language",
             description: %{
@@ -616,10 +616,25 @@ User.create(firstname: "Sam22",
             password: 12345678
             )
 
-# Country.create(name: "Ukraine",
-#             id: 1
-#             )
+Country.create(name: "Ukraine",
+            id: 1
+            )
 
-# Country.create(name: "GB",
-#             id: 2
-#             )
+Country.create(name: "GB",
+            id: 2
+            )
+
+Delivery.create(name: "UPS Ground",
+                price: 5,
+                id: 1
+            )
+
+Delivery.create(name: "UPS Two Day",
+                price: 10,
+                id: 2
+            )
+
+Delivery.create(name: "UPS One Day",
+                price: 15,
+                id: 3
+            )

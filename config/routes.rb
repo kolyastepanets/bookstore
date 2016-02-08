@@ -17,8 +17,13 @@ Rails.application.routes.draw do
 
   get 'checkouts/address'
   get 'checkouts/delivery'
+  get 'checkouts/payment'
+  get 'checkouts/confirm'
+  get 'checkouts/completed'
   patch 'checkouts/update_address'
-
+  patch 'checkouts/update_delivery'
+  patch 'checkouts/update_payment'
+  patch 'checkouts/place_order'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

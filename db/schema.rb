@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207115321) do
+ActiveRecord::Schema.define(version: 20160208103031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,32 @@ ActiveRecord::Schema.define(version: 20160207115321) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "countries", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.integer  "number",           limit: 8
+    t.integer  "integer",          limit: 8
+    t.integer  "cvv"
+    t.integer  "expiration_month"
+    t.integer  "expiration_year"
+    t.integer  "order_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "credit_cards", ["order_id"], name: "index_credit_cards_on_order_id", using: :btree
+
+  create_table "deliveries", force: :cascade do |t|
+    t.decimal  "price"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.decimal  "price"
     t.integer  "quantity"
@@ -80,16 +106,17 @@ ActiveRecord::Schema.define(version: 20160207115321) do
 
   create_table "orders", force: :cascade do |t|
     t.decimal  "total_price"
-    t.date     "completed_date", default: '2016-02-05'
+    t.date     "completed_date", default: '2016-02-08'
     t.string   "aasm_state"
     t.integer  "user_id"
-    t.integer  "credit_card_id"
+    t.integer  "checkout_id"
+    t.integer  "delivery_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
-    t.integer  "checkout_id"
   end
 
-  add_index "orders", ["credit_card_id"], name: "index_orders_on_credit_card_id", using: :btree
+  add_index "orders", ["checkout_id"], name: "index_orders_on_checkout_id", using: :btree
+  add_index "orders", ["delivery_id"], name: "index_orders_on_delivery_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|

@@ -1,6 +1,6 @@
 class OrderItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order
+  # before_action :set_order
 
   def create
     @order_item = @order.add_book(params[:book_id], params[:quantity], params[:price])
@@ -24,15 +24,4 @@ class OrderItemsController < ApplicationController
     def order_item_params
       params.require(:order_item).permit(:quantity, :book_id)
     end
-
-    def set_order
-      if current_user
-        if current_user.orders.in_progress.last
-          @order = current_user.orders.in_progress.last
-        else
-          @order = current_user.orders.create
-        end
-      end
-    end
-
 end

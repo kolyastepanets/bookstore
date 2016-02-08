@@ -18,7 +18,7 @@ div class="row"
             | DELIVERY
       div class="col-xs-2 link-in-order"
         h4 class="#{is_active?("payment")}"
-          - if !@order.credit_card.nil?
+          - if @order.credit_card.valid?
             = link_to "PAYMENT", checkouts_payment_path
           - else
             | PAYMENT
@@ -42,17 +42,32 @@ div class="row"
           | ×
         = content_tag :div, msg, :id => "flash_#{name}"
 
-
 div class="row columns-addresses"
   div class="col-xs-4"
     div class="col-xs-12"
-      h4 DELIVERY
+      h4 CREDIT CARD
     div class="col-xs-12"
-      = form_for @order, url: checkouts_update_delivery_path  do |f|
-        - @deliveries.each do |delivery|
-          label
-            = f.radio_button :delivery_id, delivery.id
-            = "#{delivery.name} + #{number_to_currency(delivery.price)}"
+      = form_for @order, url: checkouts_update_payment_path  do |f|
+        = f.fields_for :credit_card do |cc|
+          = cc.text_field :number, placeholder: 'Card Number', class: 'form-control address-input-field'
+
+          div class="row"
+            div class="col-xs-12"
+              h5
+                | Expiration date:
+            div class="col-xs-12"
+              div class="col-xs-6 month-year-field"
+                = cc.select(:expiration_month, options_for_select(cc_months), { prompt: "Month" }, {class: 'form-control address-input-field'})
+              div class="col-xs-6 month-year-field"
+                = cc.select(:expiration_year, options_for_select(cc_years), { prompt: "Year" }, {class: 'form-control address-input-field'})
+
+          div class="row"
+            div class="col-xs-12"
+              div class="col-xs-6 month-year-field"
+                = cc.text_field :cvv, placeholder: 'Card Code', class: 'form-control address-input-field'
+              div class="col-xs-6 month-year-field-link"
+                = link_to "(What's This?)", ''
+
         = f.submit "SAVE AND CONTINUE", class: "btn btn-primary address-input-field"
 
   div class="col-xs-4"
@@ -71,7 +86,4 @@ div class="row columns-addresses"
         = number_to_currency @order.delivery.price unless @order.delivery.nil?
       h6
         | ORDER TOTAL: 
-        - if @order.delivery.nil?
-          = number_to_currency @order.total_price
-        - else
-          = number_to_currency @order.total_price + @order.delivery.price
+        = number_to_currency @order.total_price + @order.delivery.price unless @order.delivery.nil?

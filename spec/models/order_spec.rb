@@ -7,10 +7,10 @@ RSpec.describe Order, type: :model do
 
   it { should belong_to(:user) }
   it { should belong_to(:checkout) }
-  # it { should belong_to(:credit_card) }
+  it { should belong_to(:delivery) }
 
   it { should have_many(:order_items).dependent(:destroy) }
-
+  it { should have_one(:credit_card) }
 
 
 

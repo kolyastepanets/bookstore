@@ -4,10 +4,9 @@ FactoryGirl.define do
 last_name "MyString"
 street "MyString"
 city "MyString"
-country_id 1
+country
 zip 1
 phone 1
-addressable nil
   end
 
 end

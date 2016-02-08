@@ -510,3 +510,112 @@ tr.line-in-cart:last-child {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+/* ORDER PAYMENT */
+
+.month-year-field {
+  padding: 0;
+  width: 45%;
+  margin-right: 10%;
+}
+
+.month-year-field:last-child {
+  margin: 0;
+}
+
+#order_credit_card_expiration_month, #order_credit_card_expiration_year {
+  margin: 0;
+}
+
+.month-year-field-link {
+  padding: 0;
+  width: 45%;
+  margin-top: 14%;
+}
+
+#order_credit_card_attributes_expiration_month, #order_credit_card_attributes_expiration_year {
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+/* ORDER CONFIRM */
+
+.confrim-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.column-title {
+  padding: 0;
+}
+
+.title-row {
+  padding: 0;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+table > tbody > tr > td.table-title-confirm {
+  border: none;
+  padding: 0;
+}
+
+table > tbody > tr > td.table-title-confirm:first-child {
+  width: 210px;
+}
+
+table > tbody > tr > td.table-title-confirm:nth-child(2) {
+  width: 190px;
+}
+
+.column-info {
+  padding: 0;
+}
+
+.info {
+  margin: 0;
+}
+
+.link-style {
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.addresses-titles {
+  padding: 0;
+}
+
+table.table.table-confirm-order {
+  margin-bottom: 30px;
+}
+
+td.text-right.ship-price {
+  padding-top: 0;
+  border: none;
+}
+
+td.text-right.total-price-in-order {
+  padding-bottom: 0;
+}
+
+.columns-addresses {
+  margin-bottom: 100px;
+}

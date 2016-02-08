@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :checkout
-  # belongs_to :credit_card
+  belongs_to :delivery
 
   has_many :order_items, dependent: :destroy
   has_one :shipping_address, as: :addressable, class_name: "ShippingAddress"
@@ -15,17 +15,25 @@ class Order < ActiveRecord::Base
   has_one :billing_address, as: :addressable, class_name: "BillingAddress"
   accepts_nested_attributes_for :billing_address
 
+  has_one :credit_card
+  accepts_nested_attributes_for :credit_card
+
   aasm do
     state :in_progress, initial: true
-    state :complited
-    state :shipped
+    state :in_processing
+    state :in_delivery
+    state :delivered
 
-    event :complete do
-      transitions :from => :in_progress, :to => :complited
+    event :process do
+      transitions :from => :in_progress, :to => :in_processing
+    end
+
+    event :deliver do
+      transitions :from => :in_processing, :to => :in_delivery
     end
 
     event :ship do
-      transitions :from => :complited, :to => :shipped
+      transitions :from => :in_delivery, :to => :delivered
     end
   end
 
