@@ -86,23 +86,23 @@ RSpec.describe CheckoutsController, type: :controller do
     end
   end
 
-  describe "PATCH #update_payment" do
-    sign_in_user
-    let(:credit_card) { create(:credit_card) }
-    let(:order1) { create(:order, credit_card: credit_card, user: user) }
+  # describe "PATCH #update_payment" do
+  #   sign_in_user
+  #   let(:credit_card) { create(:credit_card) }
+  #   let(:order1) { create(:order, credit_card: credit_card, user: user) }
 
-    context 'valid attributes' do
-      it "updates attributes" do
-        # byebug
-        patch :update_payment, id: credit_card, order_id: order1, credit_card: { expiration_year: 2020 }
-        order1.reload
-        # byebug
-        expect(order1.credit_card.expiration_year).to eq 2020
-      end
+  #   context 'valid attributes' do
+  #     it "updates attributes" do
+  #       # byebug
+  #       patch :update_payment, id: credit_card, order_id: order1, credit_card: { expiration_year: 2020 }
+  #       order1.reload
+  #       # byebug
+  #       expect(order1.credit_card.expiration_year).to eq 2020
+  #     end
 
-    end
+  #   end
 
-    context 'invalid attributes' do
-    end
-  end
+  #   context 'invalid attributes' do
+  #   end
+  # end
 end
