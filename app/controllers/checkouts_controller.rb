@@ -1,9 +1,10 @@
 class CheckoutsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_order
+  before_action :check_confirm, only: :confirm
 
   def address
-    # byebug
-    @order.building_billing_address
+    @order.build_both_addresses
     @countries = Country.all
     # byebug
   end
@@ -13,7 +14,9 @@ class CheckoutsController < ApplicationController
       redirect_to checkouts_delivery_path
     else
       redirect_to checkouts_address_path
+      Rails.logger.info(@order.billing_address.errors.inspect)
       flash[:alert] = @order.billing_address.errors.full_messages.join(", ")
+      flash[:alert] = @order.shipping_address.errors.full_messages.join(", ")
     end
   end
 
@@ -31,7 +34,7 @@ class CheckoutsController < ApplicationController
   end
 
   def payment
-    @order.build_credit_card
+    @order.building_credit_card
   end
 
   def update_payment
@@ -45,16 +48,12 @@ class CheckoutsController < ApplicationController
 
   def confirm
     @order
-    # byebug
   end
 
   def place_order
     if @order.billing_address.valid? && @order.delivery.valid? && @order.credit_card.valid?
-      # byebug
       @order.process!
       create_order
-      # @checkout.destroy
-      # byebug
       redirect_to checkouts_completed_path
     else
       flash[:alert] = "unlucky guy"
@@ -63,17 +62,28 @@ class CheckoutsController < ApplicationController
 
   def completed
     @processing_order = order_in_process
-    # byebug
   end
 
   private
 
     def address_params
-      params.require(:order).permit(billing_address_attributes: [:first_name, :last_name, :street, :city, :zip, :phone, :type, :country_id])
+      params.require(:order).permit(
+          billing_address_attributes: [:first_name, :last_name, :street, :city, :zip, :phone, :type, :country_id],
+          shipping_address_attributes: [:first_name, :last_name, :street, :city, :zip, :phone, :type, :country_id])
     end
 
-    def checkout_exist?
-      redirect_to books_path if @order.nil?
+    def check_order
+      redirect_to books_path if @order.order_items.empty?
+    end
+
+    def check_confirm
+      if @order.billing_address.nil? || @order.shipping_address.nil?
+        redirect_to checkouts_address_path
+      elsif @order.credit_card.nil?
+        redirect_to checkouts_payment_path
+      elsif @order.delivery.nil?
+        redirect_to checkouts_delivery_path
+      end
     end
 
     def delivery_params

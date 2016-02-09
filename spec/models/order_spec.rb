@@ -6,7 +6,6 @@ RSpec.describe Order, type: :model do
   it { should validate_presence_of(:completed_date) }
 
   it { should belong_to(:user) }
-  it { should belong_to(:checkout) }
   it { should belong_to(:delivery) }
 
   it { should have_many(:order_items).dependent(:destroy) }

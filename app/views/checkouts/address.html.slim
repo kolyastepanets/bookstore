@@ -42,49 +42,51 @@ div class="row"
           | ×
         = content_tag :div, msg, :id => "flash_#{name}"
 
-div class="row columns-addresses"
-  div class="col-xs-4"
-    div class="col-xs-12"
-      h4 BILLING ADDRESS
-    div class="col-xs-12"
-      = form_for @order, url: checkouts_update_address_path  do |f|
-        = f.fields_for :billing_address do |bil|
-          = bil.text_field :first_name, placeholder: 'First name*', class: 'form-control address-input-field'
-          = bil.text_field :last_name, placeholder: 'Last name*', class: 'form-control address-input-field'
-          = bil.text_field :street, placeholder: 'Street Address*', class: 'form-control address-input-field'
-          = bil.text_field :city, placeholder: 'City*', class: 'form-control address-input-field'
-          = bil.select(:country_id, options_from_collection_for_select(@countries, "id", "name"), { prompt: "Country*" }, {class: 'form-control address-input-field'})
-          = bil.text_field :zip, placeholder: 'Zip*', class: 'form-control address-input-field'
-          = bil.text_field :phone, placeholder: 'Phone*', class: 'form-control address-input-field'
+= form_for @order, url: checkouts_update_address_path  do |f|
+  div class="row columns-addresses"
+    div class="col-xs-12 all-addresses"
+      div class="col-xs-4 each-address-column"
+        div class="col-xs-12"
+          h4 BILLING ADDRESS
+        div class="col-xs-12"
+          = f.fields_for :billing_address do |bil|
+            = bil.text_field :first_name, placeholder: 'First name*', class: 'form-control address-input-field'
+            = bil.text_field :last_name, placeholder: 'Last name*', class: 'form-control address-input-field'
+            = bil.text_field :street, placeholder: 'Street Address*', class: 'form-control address-input-field'
+            = bil.text_field :city, placeholder: 'City*', class: 'form-control address-input-field'
+            = bil.select(:country_id, options_from_collection_for_select(@countries, "id", "name"), { prompt: "Country*" }, {class: 'form-control address-input-field'})
+            = bil.text_field :zip, placeholder: 'Zip*', class: 'form-control address-input-field'
+            = bil.text_field :phone, placeholder: 'Phone*', class: 'form-control address-input-field'
 
-        = f.submit "SAVE AND CONTINUE", class: "btn btn-primary address-input-field"
+      div class="col-xs-4 each-address-column"
+        div class="col-xs-12"
+          h4 SHIPPING ADDRESS
+        div class="col-xs-12"
+          //= form_tag
+            = check_box_tag 'users_billing_address'
+            | Use Billing Address
+        div class="col-xs-12"
+          = f.fields_for :shipping_address do |ship|
+            = ship.text_field :first_name, placeholder: 'First name*', class: 'form-control address-input-field'
+            = ship.text_field :last_name, placeholder: 'Last name*', class: 'form-control address-input-field'
+            = ship.text_field :street, placeholder: 'Street Address*', class: 'form-control address-input-field'
+            = ship.text_field :city, placeholder: 'City*', class: 'form-control address-input-field'
+            = ship.select(:country_id, options_from_collection_for_select(@countries, "id", "name"), { prompt: "Country*" }, {class: 'form-control address-input-field'})
+            = ship.text_field :zip, placeholder: 'Zip*', class: 'form-control address-input-field'
+            = ship.text_field :phone, placeholder: 'Phone*', class: 'form-control address-input-field'
 
-  div class="col-xs-4"
-    div class="col-xs-12"
-      h4 SHIPPING ADDRESS
-    div class="col-xs-12"
-      = form_tag
-        = check_box_tag 'users_billing_address'
-        | Use Billing Address
-    div class="col-xs-12"
-      = form_tag(addresses_path) do
-        = text_field_tag :first_name, params[:first_name], placeholder: 'First name*', class: 'form-control address-input-field'
-        = text_field_tag :last_name, params[:last_name], placeholder: 'Last name*', class: 'form-control address-input-field'
-        = text_field_tag :street, params[:street], placeholder: 'Street Address*', class: 'form-control address-input-field'
-        = text_field_tag :city, params[:city], placeholder: 'City*', class: 'form-control address-input-field'
-        //= select_tag :country, options_from_collection_for_select(@countries, "id", "name"), prompt: "Country*", class: 'form-control address-input-field'
-        = text_field_tag :zip, params[:zip], placeholder: 'Zip*', class: 'form-control address-input-field'
-        = text_field_tag :phone, params[:phone], placeholder: 'Phone*', class: 'form-control address-input-field'
+      div class="col-xs-4 each-address-column"
+        div class="col-xs-12"
+          h4 ORDER SUMMARY
+        div class="col-xs-12"
+          - @order.order_items.each do |order_item|
+            h6
+              =' truncate(order_item.book.title, length: 15)
+              = number_to_currency order_item.total_price
 
-  div class="col-xs-4"
-    div class="col-xs-12"
-      h4 ORDER SUMMARY
-    div class="col-xs-12"
-      - @order.order_items.each do |order_item|
-        h6
-          =' truncate(order_item.book.title, length: 15)
-          = number_to_currency order_item.total_price
+          h6
+            | ORDER TOTAL: 
+            = number_to_currency @order.total_price
 
-      h6
-        | ORDER TOTAL: 
-        = number_to_currency @order.total_price
+    div class="col-xs-12"
+      = f.submit "SAVE AND CONTINUE", class: "btn btn-primary address-input-field"

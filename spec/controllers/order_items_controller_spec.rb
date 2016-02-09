@@ -5,6 +5,7 @@ RSpec.describe OrderItemsController, type: :controller do
   let(:user) { create(:user) }
   let(:book) { create(:book) }
   let!(:order_item) { create(:order_item, book: book) }
+  let(:order) { create(:order) }
 
   describe 'POST #create' do
     before { sign_in(user) }
@@ -15,11 +16,10 @@ RSpec.describe OrderItemsController, type: :controller do
         expect(assigns(:order_item)).to_not be_nil
       end
 
-      # it 'gets #add_book' do
-      #   expect(order).to receive(:add_book).with(book, 1, price: book.price)
-      #   # byebug
-      #   post :create, book_id: book
-      # end
+      it 'gets #add_book' do
+        order.add_book(book, 1, book.price)
+        expect(order.order_items).to_not be_empty
+      end
 
       it 'redirects to order' do
         post :create, book_id: book, order_id: order, order_item: attributes_for(:order_item)

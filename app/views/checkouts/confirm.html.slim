@@ -50,23 +50,6 @@ div class="row columns-addresses"
       tr
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
-            | Shipping Address 
-            = link_to "(edit)", checkouts_address_path, class: "link-style"
-          div class="col-xs-12 column-info"
-            p class="info"
-              = @order.billing_address.first_name
-            p class="info"
-              = @order.billing_address.last_name
-            p class="info"
-              = @order.billing_address.street
-            p class="info"
-              = @order.billing_address.city
-            p class="info"
-              | Phone 
-              = @order.billing_address.phone
-
-        td class="table-title-confirm"
-          div class="col-xs-12 title-row"
             | Billing Address 
             = link_to "(edit)", checkouts_address_path, class: "link-style"
           div class="col-xs-12 column-info"
@@ -79,8 +62,29 @@ div class="row columns-addresses"
             p class="info"
               = @order.billing_address.city
             p class="info"
+              = @order.billing_address.country.name
+            p class="info"
               | Phone 
               = @order.billing_address.phone
+
+        td class="table-title-confirm"
+          div class="col-xs-12 title-row"
+            | Shipping Address 
+            = link_to "(edit)", checkouts_address_path, class: "link-style"
+          div class="col-xs-12 column-info"
+            p class="info"
+              = @order.shipping_address.first_name
+            p class="info"
+              = @order.shipping_address.last_name
+            p class="info"
+              = @order.shipping_address.street
+            p class="info"
+              = @order.shipping_address.city
+            p class="info"
+              = @order.shipping_address.country.name
+            p class="info"
+              | Phone 
+              = @order.shipping_address.phone
 
         td class="table-title-confirm"
           div class="col-xs-12 title-row"

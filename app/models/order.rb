@@ -5,7 +5,6 @@ class Order < ActiveRecord::Base
   validates :completed_date, :aasm_state, :user_id, presence: true
 
   belongs_to :user
-  belongs_to :checkout
   belongs_to :delivery
 
   has_many :order_items, dependent: :destroy
@@ -57,6 +56,15 @@ class Order < ActiveRecord::Base
 
   def building_shipping_address
     build_shipping_address unless shipping_address
+  end
+
+  def build_both_addresses
+    building_billing_address
+    building_shipping_address
+  end
+
+  def building_credit_card
+    build_credit_card unless credit_card
   end
 
   private

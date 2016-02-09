@@ -2,8 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_order
-  # before_action :set_checkout
-  # before_action :current_checkout
 
   before_filter :update_sanitized_params, if: :devise_controller?
 
@@ -12,14 +10,6 @@ class ApplicationController < ActionController::Base
   def update_sanitized_params
     devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:firstname, :lastname, :email, :password)}
   end
-
-  # def set_order
-  #   if current_user
-  #     if current_user.orders.in_progress.last
-  #       @order = current_user.orders.in_progress.last
-  #     end
-  #   end
-  # end
 
   def set_order
     if current_user
@@ -43,22 +33,6 @@ class ApplicationController < ActionController::Base
   def order_in_process
     current_user.orders.in_processing.last
   end
-
-
-    # def set_checkout
-    #   unless @order.nil?
-    #     if Checkout.exists?
-    #       @checkout ||= Checkout.last
-    #     else
-    #       @checkout = Checkout.create
-    #       @checkout.order = @order
-    #     end
-    #   end
-    # end
-
-    # def current_checkout
-    #   @checkout.order unless @order.nil?
-    # end
 
   def store_location
     return unless request.get?
