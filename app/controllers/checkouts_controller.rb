@@ -1,7 +1,6 @@
 class CheckoutsController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_order
-  before_action :check_confirm, only: :confirm
+  before_action :check_order, except: :completed
 
   def address
     @order.build_both_addresses
@@ -47,6 +46,7 @@ class CheckoutsController < ApplicationController
   end
 
   def confirm
+    check_confirm
     @order
   end
 
