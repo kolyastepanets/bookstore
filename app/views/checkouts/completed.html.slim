@@ -65,9 +65,9 @@ div class="row columns-addresses"
             | Payment Information 
           div class="col-xs-12 column-info"
             p class="info"
-              = hidden_number_card
+              = hidden_number_card(@processing_order)
             p class="info"
-              = month_and_year
+              = month_and_year(@processing_order)
 
     table class="table"
       tr

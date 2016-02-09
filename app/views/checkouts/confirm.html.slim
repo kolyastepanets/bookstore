@@ -100,9 +100,9 @@ div class="row columns-addresses"
             = link_to "(edit)", checkouts_payment_path, class: "link-style"
           div class="col-xs-12 column-info"
             p class="info"
-              = hidden_number_card_order
+              = hidden_number_card(@order)
             p class="info"
-              = month_and_year_order
+              = month_and_year(@order)
 
     table class="table"
       tr
