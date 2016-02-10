@@ -29,35 +29,33 @@ RSpec.describe CheckoutsController, type: :controller do
     end
   end
 
-   #  describe "PATCH #update_address" do
-   #    sign_in_user
-   #    let(:billing_address) { create(:address) }
-   #    let(:order1) { create(:order, billing_address: billing_address, user: user) }
-   #    let(:order_item1) { create(:order_item, book: book, order: order1) }
-   # #    before { order.create_billing_address!("id"=>"1","first_name"=>"qwerty",
-   #             # "last_name"=>"qwerty",
-   #             # "street"=>"qwerty",
-   #             # "city"=>"qwerty",
-   #             # "country_id"=>"2",
-   #             # "zip"=>"123",
-   #             # "phone"=>"1231212123",
-   #             # "created_at"=>"10",
-   #             # "updated_at"=>"12") }
+  describe "PATCH #update_address" do
+    sign_in_user
+    let(:billing_address) { create(:address) }
+    let(:shipping_address) { create(:address) }
 
-   #    context 'valid attributes' do
-   #      it "updates attributes for addresses" do
-   #        # byebug
-   #        patch :update_address, id: order1.billing_address.id, order_id: order1, order1.billing_address=> { street: "new street" }
-   #        order1.reload
-   #        # byebug
-   #        expect(order1.billing_address.street).to eq "new street"
-   #      end
+    context 'valid attributes' do
+      it "assigns order.address" do
+        patch :update_address, id: billing_address.id, id: shipping_address.id, order_id: order,
+                                   billing_address: attributes_for(:billing_address),
+                                   shipping_address: attributes_for(:shipping_address)
+        expect(assigns(order.billing_address)).not_to be_nil
+        expect(assigns(order.shipping_address)).not_to be_nil
+      end
 
-   #    end
+      # it "redirects to delivery page" do
+      #   patch :update_address, id: billing_address.id, id: shipping_address, order_id: order,
+      #                              billing_address: attributes_for(:billing_address),
+      #                              shipping_address: attributes_for(:shipping_address)
+      #   expect(response).to redirect_to checkouts_delivery_path
+      # end
 
-   #    context 'invalid attributes' do
-   #    end
-   #  end
+
+    end
+
+    context 'invalid attributes' do
+    end
+  end
 
   describe "GET #delivery" do
     before { sign_in(user) }
@@ -70,6 +68,10 @@ RSpec.describe CheckoutsController, type: :controller do
     it 'render delivery' do
       expect(response).to render_template :delivery
     end
+  end
+
+  describe "PATCH #update_delivery" do
+
   end
 
   describe 'GET #payment' do
@@ -86,23 +88,74 @@ RSpec.describe CheckoutsController, type: :controller do
     end
   end
 
-  # describe "PATCH #update_payment" do
-  #   sign_in_user
-  #   let(:credit_card) { create(:credit_card) }
-  #   let(:order1) { create(:order, credit_card: credit_card, user: user) }
+  describe "PATCH #update_payment" do
+    sign_in_user
+    let(:credit_card) { create(:credit_card) }
+    let(:order_item1) { create(:order_item, book: book) }
+    let(:order_item2) { create(:order_item, book: book) }
+    let(:order1) { create(:order, order_items: [order_item1, order_item2], user: user, credit_card: credit_card) }
+    let(:billing_address) { create(:billing_address) }
+    let(:shipping_address) { create(:shipping_address) }
 
-  #   context 'valid attributes' do
-  #     it "updates attributes" do
-  #       # byebug
-  #       patch :update_payment, id: credit_card, order_id: order1, credit_card: { expiration_year: 2020 }
-  #       order1.reload
-  #       # byebug
-  #       expect(order1.credit_card.expiration_year).to eq 2020
-  #     end
+    before do
+      allow(order1).to receive(:billing_address) { billing_address }
+      allow(order1).to receive(:shipping_address) { shipping_address }
+      allow(order1).to receive(:delivery) { delivery }
+    end
 
-  #   end
+    context 'valid attributes' do
+      it "assigns order.credit_card" do
+        patch :update_payment, id: credit_card.id, order_id: order1, credit_card: attributes_for(:credit_card)
+        expect(assigns(order.credit_card)).not_to be_nil
+      end
 
-  #   context 'invalid attributes' do
-  #   end
-  # end
+      # it "receives update for order.credit_card" do
+      #   expect(order1.credit_card).to receive(:update_attributes).with(attributes_for(:credit_card))
+      #   patch :update_payment, id: credit_card.id, order_id: order1, credit_card: attributes_for(:credit_card)
+      # end
+
+      # it "redirects to paymen page" do
+      #   patch :update_payment, id: credit_card.id, order_id: order1, credit_card: attributes_for(:credit_card)
+      #   byebug
+      #   expect(response).to redirect_to checkouts_confirm_path
+      # end
+    end
+
+    # context 'invalid attributes' do
+      # it "assigns order.credit_card" do
+        # patch :update_payment, id: credit_card.id, order_id: order1, credit_card: attributes_for(:credit_card, :invalid)
+        # byebug
+        # expect(response).to redirect_to checkouts_payment_path
+      # end
+
+    # end
+  end
+
+  describe 'GET #confirm' do
+
+    before do
+      allow(controller).to receive(:check_confirm) { false }
+      sign_in(user)
+      get :confirm
+    end
+
+    it 'returns order if everything is valid' do
+      credit_card = create(:credit_card, order: order)
+      expect(order.credit_card).to be_valid
+    end
+
+    it 'does not return if credit_card invalid' do
+      # byebug
+      expect(order.credit_card).to be_nil
+    end
+
+    it 'render payment' do
+      expect(response).to render_template :confirm
+    end
+
+  end
+
+  describe "PATCH #place_order" do
+  end
+
 end

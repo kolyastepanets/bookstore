@@ -84,6 +84,14 @@ if (typeof jQuery === 'undefined') {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
++function ($) {
+
+  $(document)
+    .on('click', '#coping_billing_address', function (e) {
+      $('.form-for-shipping').toggle();
+    });
+
+}(jQuery);
 
 +function ($) {
   'use strict';

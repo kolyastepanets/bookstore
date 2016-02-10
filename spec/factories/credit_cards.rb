@@ -4,5 +4,12 @@ FactoryGirl.define do
     cvv 123
     expiration_month 1
     expiration_year 2017
+
+    trait :invalid do
+      number nil
+      cvv nil
+      expiration_month nil
+      expiration_year nil
+    end
   end
 end

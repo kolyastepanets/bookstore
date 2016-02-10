@@ -9,7 +9,7 @@ class CheckoutsController < ApplicationController
   end
 
   def update_address
-    if @order.update_attributes(address_params)
+    if @order.updating_both_addresses(addresses_params, params[:coping_billing_address])
       redirect_to checkouts_delivery_path
     else
       redirect_to checkouts_address_path
@@ -64,12 +64,17 @@ class CheckoutsController < ApplicationController
     @processing_order = order_in_process
   end
 
+
   private
 
-    def address_params
+    def addresses_params
       params.require(:order).permit(
-          billing_address_attributes: [:first_name, :last_name, :street, :city, :zip, :phone, :type, :country_id],
-          shipping_address_attributes: [:first_name, :last_name, :street, :city, :zip, :phone, :type, :country_id])
+          billing_address_attributes: address_params,
+          shipping_address_attributes: address_params)
+    end
+
+    def address_params
+      [:first_name, :last_name, :street, :city, :zip, :phone, :type, :country_id]
     end
 
     def check_order

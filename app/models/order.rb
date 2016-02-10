@@ -67,6 +67,15 @@ class Order < ActiveRecord::Base
     build_credit_card unless credit_card
   end
 
+  def updating_both_addresses(params, coping)
+    if coping
+      params[:shipping_address_attributes] = params[:billing_address_attributes]
+      update_attributes(params)
+    else
+      update_attributes(params)
+    end
+  end
+
   private
 
     def update_total_price
