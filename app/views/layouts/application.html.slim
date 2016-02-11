@@ -51,13 +51,13 @@ html
                   '|
                 p.nav-p
                   =' link_to('Orders', orders_path, class: "nav-link")
-                '| 
+                '|
                 p.nav-p
                   = link_to "Sign out", destroy_user_session_path, :method => :delete, class: "nav-link"
               - else
                 p.nav-p
                   =' link_to('Sign in', new_user_session_path, class: "nav-link")
-                '| 
+                '|
                 p.nav-p
                   = link_to('Sign up', new_user_registration_path, class: "nav-link")
       .products

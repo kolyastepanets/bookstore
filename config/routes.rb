@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root 'static_pages#home'
 
   resources :books do
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resources :addresses
-  # resources :checkout
 
   get 'checkouts/address'
   get 'checkouts/delivery'

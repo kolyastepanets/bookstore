@@ -57,4 +57,7 @@ end
 group :test do
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
   gem "codeclimate-test-reporter"
+  gem "launchy"
+  gem "capybara"
+  gem 'capybara-screenshot'
 end
