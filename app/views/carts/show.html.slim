@@ -1,0 +1,63 @@
+- if @order.nil?
+  p class="text-center"
+    | There are no items in your shopping cart. Please 
+    =' link_to "go back", root_path 
+    | and add some items to your cart.
+- else
+    = form_tag cart_path, method: "patch" do
+      table class="table"
+        tr
+          td class="table-title"
+          td class="table-title"
+            | BOOK
+          td class="table-title"
+            | PRICE
+          td class="table-title"
+            | QTY
+          td class="table-title"
+            | TOTAL
+          td
+        - @order.order_items.each do |order_item|
+          = fields_for "items[]", order_item do |f|
+            tr class="line-in-cart"
+              td
+                = link_to book_path(order_item.book)
+                  = image_tag("default1.png", class: "image-in-cart")
+              td
+                p class="book-title-in-cart"
+                  = order_item.book.title
+                p
+                  = truncate(order_item.book.description, length: 180)
+              td class="book-price-in-cart"
+                = number_to_currency order_item.unit_price
+              td
+                = f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1
+                = f.hidden_field :book_id, value: order_item.book.id
+
+              td class="book-price-in-cart"
+                = number_to_currency order_item.total_price
+
+              td
+                = link_to order_item, method: :delete
+                  = image_tag("cross.png", class: "cross-in-cart")
+
+        table class="table"
+          tr
+            td class="text-right"
+              p class="p-book-price-in-cart"
+                | SUBTOTAL:
+              p class="p-book-price-in-cart"
+                = number_to_currency @order.total_price
+            td class="empty-rignt"
+
+        table class="table"
+          tr
+            td
+              = link_to 'EMPTY CART', @cart, method: :delete, class: "btn btn-danger"
+            td
+              = link_to 'CONTINUE SHOPPING', {controller: :books, action: :index}, class: "btn btn-primary"
+            td class="empty-column"
+            td
+              = submit_tag "Update", class: "btn btn-primary btn-update-quantity"
+            td
+              = link_to 'CHECKOUT', checkouts_address_path, class: "btn btn-primary"

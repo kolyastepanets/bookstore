@@ -1,0 +1,39 @@
+div class="row"
+  div class="col-xs-9"
+    div class="title-book"
+      p class="title-links"
+        = link_to 'Home', root_path
+        |  >> 
+        = link_to 'Shop', books_path
+        |  >> 
+        = link_to category_path(@category)
+            = @category.title
+      div
+        h2
+          | Categories - 
+          = @category.title
+
+    div class="col-xs-12"
+      div class="row row-eq-height-xs"
+        - @books.each do |book|
+          div class="col-sm-4 col-lg-4 col-md-4"
+            = link_to book_path(book)
+              = image_tag("default1.png")
+            div class='caption'
+              div class="link-button"
+                = link_to truncate(book.title, length: 45), book_path(book)
+              div class="price-product"
+                = number_to_currency(book.price)
+      div class="pagination-for-products"
+        = paginate @books
+
+  div class="col-xs-3"
+    div class="shop"
+      h5 class="text-muted"
+        | SHOP BY CATEGORIES
+      div class="row"
+        - @categories.each do |category|
+          div class="col-xs-12"
+            div class="category"
+              = link_to category_path(category)
+                = category.title

@@ -1,0 +1,64 @@
+doctype html
+html
+  head
+    title
+      | The Bookstore
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'bootstrap', 'all-app', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'jquery', 'bootstrap', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    .container-fluid
+      .header
+        .row
+          .col-xs-3.header-info
+            h3.text-muted
+              | The Bookstore
+
+          .col-xs-3.header-info
+            .home-shop
+              ul.nav.nav-pills
+                li{role="presentation", class= "#{ "active" if params[:controller] == 'static_pages' }"}
+                  = link_to 'Home', root_path
+                li{role="presentation", class= "#{ "active" if params[:controller] == 'books' }"}
+                  = link_to 'Shop', books_path
+
+          .col-xs-3.header-info
+            .col-xs-6.cart-img
+              = image_tag("cart.png", :alt => "Cart", class:"image-cart")
+            .col-xs-6.cart-text
+              - if current_user
+                - if !@order.nil?
+                  - if @order.order_items.size == 0
+                    p class="empty-cart"
+                      | (Empty Cart)
+                  - elsif @order.order_items.size == 1
+                    = link_to "#{@order.order_items.size} Item ( #{number_to_currency @order.total_price} )", cart_path(@order), class: "btn btn-link"
+                  - else
+                    = link_to "#{@order.order_items.size} Items ( #{number_to_currency @order.total_price} )", cart_path(@order), class: "btn btn-link"
+                - else
+                  p class="empty-cart"
+                    | (Empty Cart)
+              - else
+                p class="empty-cart"
+                  | (Empty Cart)
+
+          .col-xs-3.header-info
+            ul.nav.nav-pills.settings-links
+              - if current_user
+                p.nav-p
+                  =' link_to('Settings', edit_user_registration_path, class: "nav-link")
+                  '|
+                p.nav-p
+                  =' link_to('Orders', orders_path, class: "nav-link")
+                '|
+                p.nav-p
+                  = link_to "Sign out", destroy_user_session_path, :method => :delete, class: "nav-link"
+              - else
+                p.nav-p
+                  =' link_to('Sign in', new_user_session_path, class: "nav-link")
+                '|
+                p.nav-p
+                  = link_to('Sign up', new_user_registration_path, class: "nav-link")
+      .products
+        = yield

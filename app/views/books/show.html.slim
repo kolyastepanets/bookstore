@@ -1,0 +1,64 @@
+div class="title-book"
+  h2
+    = @book.title
+
+div class="row"
+  div class="col-xs-4"
+    = image_tag("default.png")
+
+  div class="col-xs-8"
+    div class="col-xs-12"
+      div class="col-xs-3"
+        div class="pull-left"
+          div class="book-price-on-book-page"
+            = number_to_currency(@book.price)
+
+      div class="col-xs-2"
+      div class="col-xs-2"
+
+      div class="col-xs-4"
+        = form_tag(order_items_path(book_id: @book.id)) do
+          .input-group
+            = number_field_tag(:quantity, 1, min: 1, class: 'form-control input-field-width')
+            .input-group-btn
+              = hidden_field_tag :book, value: @book
+              = hidden_field_tag :price, value: @book.price
+              = submit_tag "Add to Cart", class: "btn btn-primary"
+
+    div class="col-xs-12"
+      p class="description-text"
+        = @book.description
+
+  div class="col-xs-12"
+    div class="col-xs-12 reviews"
+      div class="title-book"
+        div class="col-xs-3 div-review"
+          h3 class="reviews-title"
+            | Reviews
+        div class="col-xs-9"
+          p class="link-add-review"
+            = link_to "Add review for this book", new_book_review_path(@book), class: "btn btn-link add-review-btn"
+
+    div class="all-rewiews"
+      - @book.reviews.each do |review|
+        div class="row the-whole-review"
+          div class="col-xs-12"
+            table class="table"
+              tr
+                th class="book-rating"
+                  = review.value
+                th class="title-review"
+                  = review.title
+                th class="created-review"
+                  = review.created_at.strftime("%B %e, %Y")
+
+          div class="col-xs-12 link-to-customer"
+            | by 
+            = link_to '', class: "link"
+              =' review.user.firstname
+              | 
+              = review.user.lastname
+
+          div class="col-xs-12"
+            p
+              = review.content

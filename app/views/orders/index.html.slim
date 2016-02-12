@@ -1,0 +1,11 @@
+- @orders.each do |order|
+  - if !order.order_items.empty?
+    div class="col-sm-4 col-lg-4 col-md-4"
+      div class="link-button"
+        = link_to order.completed_date, order_path(order)
+      div class="link-button"
+        = link_to order.aasm_state, order_path(order)
+      div class="link-button"
+        = link_to order.total_price, order_path(order)
+      div class="link-button"
+        = link_to order.created_at
