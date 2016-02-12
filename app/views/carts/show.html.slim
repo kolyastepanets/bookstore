@@ -1,7 +1,7 @@
 - if @order.nil?
   p class="text-center"
-    | There are no items in your shopping cart. Please 
-    =' link_to "go back", root_path 
+    | There are no items in your shopping cart. Please
+    =' link_to "go back", root_path
     | and add some items to your cart.
 - else
     = form_tag cart_path, method: "patch" do
@@ -37,7 +37,7 @@
               td class="book-price-in-cart"
                 = number_to_currency order_item.total_price
 
-              td
+              td class= "book-#{order_item.book.id}"
                 = link_to order_item, method: :delete
                   = image_tag("cross.png", class: "cross-in-cart")
 

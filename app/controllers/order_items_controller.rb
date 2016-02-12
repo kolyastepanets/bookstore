@@ -1,6 +1,5 @@
 class OrderItemsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :set_order
 
   def create
     @order_item = @order.add_book(params[:book_id], params[:quantity], params[:price])
