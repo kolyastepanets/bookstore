@@ -6,3 +6,4 @@ languages:
 
 exclude_paths:
 - public/
+- public/assets_test/

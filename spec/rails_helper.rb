@@ -73,17 +73,17 @@ RSpec.configure do |config|
   Capybara.javascript_driver = :webkit
 
 
-  Capybara::Screenshot.autosave_on_failure = false
+  # Capybara::Screenshot.autosave_on_failure = false
 
-  config.after(:each) do
-    page.driver.reset!
-  end
+  # config.after(:each) do
+  #   page.driver.reset!
+  # end
 
-  Capybara::Screenshot.class_eval do
-    register_driver(:webkit) do |driver, path|
-      driver.render(path)
-    end
-  end
+  # Capybara::Screenshot.class_eval do
+  #   register_driver(:webkit) do |driver, path|
+  #     driver.render(path)
+  #   end
+  # end
 
 
 
