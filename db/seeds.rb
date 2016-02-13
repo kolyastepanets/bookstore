@@ -606,7 +606,8 @@ User.create(firstname: "Sam",
             lastname: "Serious",
             id: 1,
             email: "test@test.com",
-            password: 12345678
+            password: 12345678,
+            admin: true
             )
 
 User.create(firstname: "Sam22",

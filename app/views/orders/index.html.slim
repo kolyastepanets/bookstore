@@ -6,6 +6,6 @@
       div class="link-button"
         = link_to order.aasm_state, order_path(order)
       div class="link-button"
-        = link_to order.total_price, order_path(order)
+        = link_to order.total_price_with_delivery, order_path(order)
       div class="link-button"
         = link_to order.created_at

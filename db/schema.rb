@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211193122) do
+ActiveRecord::Schema.define(version: 20160213153731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,16 +101,14 @@ ActiveRecord::Schema.define(version: 20160211193122) do
 
   create_table "orders", force: :cascade do |t|
     t.decimal  "total_price"
-    t.date     "completed_date", default: '2016-02-11'
+    t.date     "completed_date", default: '2016-02-13'
     t.string   "aasm_state"
     t.integer  "user_id"
-    t.integer  "checkout_id"
     t.integer  "delivery_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
   end
 
-  add_index "orders", ["checkout_id"], name: "index_orders_on_checkout_id", using: :btree
   add_index "orders", ["delivery_id"], name: "index_orders_on_delivery_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
@@ -130,18 +128,19 @@ ActiveRecord::Schema.define(version: 20160211193122) do
   create_table "users", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

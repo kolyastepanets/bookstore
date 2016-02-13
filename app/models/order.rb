@@ -22,6 +22,7 @@ class Order < ActiveRecord::Base
     state :in_processing
     state :in_delivery
     state :delivered
+    state :canceled
 
     event :process do
       transitions :from => :in_progress, :to => :in_processing
@@ -33,6 +34,10 @@ class Order < ActiveRecord::Base
 
     event :ship do
       transitions :from => :in_delivery, :to => :delivered
+    end
+
+    event :cancel do
+      transitions :from => [:in_processing, :in_delivery], :to => :canceled
     end
   end
 
@@ -48,6 +53,14 @@ class Order < ActiveRecord::Base
 
   def total_price
     order_items.to_a.sum { |item| item.total_price }
+  end
+
+  def delivery_price
+    delivery.nil? ? 0 : delivery.price
+  end
+
+  def total_price_with_delivery
+    total_price + delivery_price
   end
 
   def building_billing_address
@@ -79,7 +92,7 @@ class Order < ActiveRecord::Base
   private
 
     def update_total_price
-      self.total_price = total_price
+      self.total_price = total_price_with_delivery
     end
 
 end

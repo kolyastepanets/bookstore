@@ -6,7 +6,7 @@ div class="row"
     div class="col-xs-9"
       div class="col-xs-2 link-in-order"
         h4 class="#{is_active?("address")}"
-          - if @order.billing_address.valid?
+          - if @order.billing_address.valid? && @order.shipping_address.valid?
             = link_to "ADDRESS", checkouts_address_path
           - else
             | ADDRESS
@@ -24,10 +24,7 @@ div class="row"
             | PAYMENT
       div class="col-xs-2 link-in-order"
         h4 class="#{is_active?("confirm")}"
-          - if !@order.in_progress?
-            = link_to "CONFIRM", checkouts_confirm_path
-          - else
-            | CONFIRM
+          | CONFIRM
       div class="col-xs-2 link-in-order"
         h4
           | COMPLETE
@@ -37,7 +34,7 @@ div class="row"
       - if msg.is_a?(String)
         |  <div class="alert alert-
         = name.to_s == 'notice' ? 'success' : 'danger'
-        | "> 
+        | ">
         button.close[type="button" data-dismiss="alert" aria-hidden="true"]
           | ×
         = content_tag :div, msg, :id => "flash_#{name}"
@@ -50,7 +47,7 @@ div class="row columns-addresses"
       tr
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
-            | Billing Address 
+            | Billing Address
             = link_to "(edit)", checkouts_address_path, class: "link-style"
           div class="col-xs-12 column-info"
             p class="info"
@@ -64,12 +61,12 @@ div class="row columns-addresses"
             p class="info"
               = @order.billing_address.country.name
             p class="info"
-              | Phone 
+              | Phone
               = @order.billing_address.phone
 
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
-            | Shipping Address 
+            | Shipping Address
             = link_to "(edit)", checkouts_address_path, class: "link-style"
           div class="col-xs-12 column-info"
             p class="info"
@@ -83,12 +80,12 @@ div class="row columns-addresses"
             p class="info"
               = @order.shipping_address.country.name
             p class="info"
-              | Phone 
+              | Phone
               = @order.shipping_address.phone
 
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
-            | Shipments 
+            | Shipments
             = link_to "(edit)", checkouts_delivery_path, class: "link-style"
           div class="col-xs-12 column-info"
             p class="info"
@@ -96,7 +93,7 @@ div class="row columns-addresses"
 
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
-            | Payment Information 
+            | Payment Information
             = link_to "(edit)", checkouts_payment_path, class: "link-style"
           div class="col-xs-12 column-info"
             p class="info"
@@ -145,7 +142,7 @@ div class="row columns-addresses"
           p class="p-book-price-in-cart"
             | SHIPPING:
           p class="p-book-price-in-cart"
-            = number_to_currency @order.delivery.price
+            = number_to_currency @order.delivery_price
 
     table class="table"
       tr
@@ -153,7 +150,7 @@ div class="row columns-addresses"
           p class="p-book-price-in-cart"
             | ORDER TOTAL:
           p class="p-book-price-in-cart"
-            = number_to_currency @order.total_price + @order.delivery.price
+            = number_to_currency @order.total_price_with_delivery
 
     = form_for @order, url: checkouts_place_order_path  do |f|
       = f.submit "PLACE ORDER", class: "btn btn-primary address-input-field"

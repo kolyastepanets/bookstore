@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       redirect_to @book
+      flash[:alert] = "Before publish your review will be checked by moderator"
     else
       render :new
     end

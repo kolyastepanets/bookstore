@@ -13,7 +13,7 @@ class CheckoutsController < ApplicationController
       redirect_to checkouts_delivery_path
     else
       redirect_to checkouts_address_path
-      Rails.logger.info(@order.billing_address.errors.inspect)
+      # Rails.logger.info(@order.billing_address.errors.inspect)
       flash[:alert] = @order.billing_address.errors.full_messages.join(", ")
       flash[:alert] = @order.shipping_address.errors.full_messages.join(", ")
     end
@@ -53,7 +53,6 @@ class CheckoutsController < ApplicationController
   def place_order
     if @order.billing_address.valid? && @order.delivery.valid? && @order.credit_card.valid?
       @order.process!
-      create_order
       redirect_to checkouts_completed_path
     else
       flash[:alert] = "unlucky guy"

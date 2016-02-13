@@ -7,7 +7,7 @@ div class="row columns-addresses"
       tr
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
-            | Shipping Address 
+            | Shipping Address
           div class="col-xs-12 column-info"
             p class="info"
               = @processing_order.billing_address.first_name
@@ -20,12 +20,12 @@ div class="row columns-addresses"
             p class="info"
               = @processing_order.billing_address.country.name
             p class="info"
-              | Phone 
+              | Phone
               = @processing_order.billing_address.phone
 
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
-            | Billing Address 
+            | Billing Address
           div class="col-xs-12 column-info"
             p class="info"
               = @processing_order.shipping_address.first_name
@@ -38,19 +38,19 @@ div class="row columns-addresses"
             p class="info"
               = @processing_order.shipping_address.country.name
             p class="info"
-              | Phone 
+              | Phone
               = @processing_order.shipping_address.phone
 
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
-            | Shipments 
+            | Shipments
           div class="col-xs-12 column-info"
             p class="info"
               = @processing_order.delivery.name
 
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
-            | Payment Information 
+            | Payment Information
           div class="col-xs-12 column-info"
             p class="info"
               = hidden_number_card(@processing_order)
@@ -98,7 +98,7 @@ div class="row columns-addresses"
           p class="p-book-price-in-cart"
             | SHIPPING:
           p class="p-book-price-in-cart"
-            = number_to_currency @processing_order.delivery.price
+            = number_to_currency @processing_order.delivery_price
 
     table class="table"
       tr
@@ -106,6 +106,6 @@ div class="row columns-addresses"
           p class="p-book-price-in-cart"
             | ORDER TOTAL:
           p class="p-book-price-in-cart"
-            = number_to_currency @processing_order.total_price + @processing_order.delivery.price
+            = number_to_currency @processing_order.total_price_with_delivery
 
     = link_to "GO BACK TO STORE", books_path, class: "btn btn-primary address-input-field"

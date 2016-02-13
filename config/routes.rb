@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
   root 'static_pages#home'
@@ -15,15 +16,17 @@ Rails.application.routes.draw do
   resources :orders
   resources :addresses
 
-  get 'checkouts/address'
-  get 'checkouts/delivery'
-  get 'checkouts/payment'
-  get 'checkouts/confirm'
-  get 'checkouts/completed'
-  patch 'checkouts/update_address'
-  patch 'checkouts/update_delivery'
-  patch 'checkouts/update_payment'
-  patch 'checkouts/place_order'
+  namespace 'checkouts' do
+    get 'address'
+    get 'delivery'
+    get 'payment'
+    get 'confirm'
+    get 'completed'
+    patch 'update_address'
+    patch 'update_delivery'
+    patch 'update_payment'
+    patch 'place_order'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

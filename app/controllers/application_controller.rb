@@ -15,10 +15,12 @@ class ApplicationController < ActionController::Base
     if current_user
       if order_in_progress
         @order = order_in_progress
-      else
-        create_order
       end
     end
+  end
+
+  def set_current_order
+    order_in_progress ? @order = order_in_progress : create_order
   end
 
   def create_order

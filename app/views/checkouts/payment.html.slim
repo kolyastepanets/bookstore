@@ -6,7 +6,7 @@ div class="row"
     div class="col-xs-9"
       div class="col-xs-2 link-in-order"
         h4 class="#{is_active?("address")}"
-          - if @order.billing_address.valid?
+          - if @order.billing_address.valid? && @order.shipping_address.valid?
             = link_to "ADDRESS", checkouts_address_path
           - else
             | ADDRESS
@@ -24,10 +24,7 @@ div class="row"
             | PAYMENT
       div class="col-xs-2 link-in-order"
         h4 class="#{is_active?("confirm")}"
-          - if !@order.in_progress?
-            = link_to "CONFIRM", checkouts_confirm_path
-          - else
-            | CONFIRM
+          | CONFIRM
       div class="col-xs-2 link-in-order"
         h4
           | COMPLETE
@@ -37,7 +34,7 @@ div class="row"
       - if msg.is_a?(String)
         |  <div class="alert alert-
         = name.to_s == 'notice' ? 'success' : 'danger'
-        | "> 
+        | ">
         button.close[type="button" data-dismiss="alert" aria-hidden="true"]
           | ×
         = content_tag :div, msg, :id => "flash_#{name}"
@@ -82,8 +79,8 @@ div class="row columns-addresses"
           = number_to_currency order_item.total_price
 
       h6
-        | SHIPPING: 
-        = number_to_currency @order.delivery.price unless @order.delivery.nil?
+        | SHIPPING:
+        = number_to_currency @order.delivery_price
       h6
-        | ORDER TOTAL: 
-        = number_to_currency @order.total_price + @order.delivery.price unless @order.delivery.nil?
+        | ORDER TOTAL:
+        = number_to_currency @order.total_price_with_delivery
