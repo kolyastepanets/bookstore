@@ -94,6 +94,45 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 +function ($) {
+
+//     $('#checkbox-user').click(function () {
+//     //check if checkbox is checked
+//     if ($(this).is(':checked')) {
+
+//         $('#deleteAccount').removeAttr('disabled'); //enable input
+
+//     } else {
+//         $('#deleteAccount').attr('disabled', true); //disable input
+//     }
+// });
+  // $('#checkbox-user').click(function () {
+  //   if ($(this).is(':checked')) {
+  //     $('#deleteAccount').click(function () {
+  //       return false;
+  //     });
+  //   } else {
+  //     $('#deleteAccount').unbind('click');
+  //   }
+  // });
+
+  // $('#checkbox-user').change(function(){
+  //   var c = this.checked ? '#f00' : '#09f';
+  //   $('#deleteAccount').css('color', c);
+  // });
+  $(document)
+    .on('change', '#checkbox-user', function (e) {
+      if ($(this).is(':checked')) {
+        $('#deleteAccount').removeClass('disabled');
+      } else {
+        $('#deleteAccount').addClass('disabled');
+      }
+
+    });
+
+}(jQuery);
+
+
++function ($) {
   'use strict';
 
   // ALERT CLASS DEFINITION

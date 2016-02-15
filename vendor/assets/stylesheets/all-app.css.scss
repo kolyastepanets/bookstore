@@ -643,3 +643,36 @@ td.text-right.total-price-in-order {
   margin: 0;
   margin-bottom: 20px;
 }
+
+
+
+
+
+
+
+
+/* USER SETTINGS */
+
+.title-user-address {
+  border-bottom: 2px solid black;
+}
+
+.all-addresses {
+  margin-top: 30px;
+}
+
+.remove-account {
+  margin-top: 20px;
+}
+
+#deleteAccount {
+  display: inline-block;
+}
+
+.checbox-for-user {
+  padding: 0;
+}
+
+.checbox-for-user:last-child {
+  margin-top: 25px;
+}

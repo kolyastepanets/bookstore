@@ -3,12 +3,14 @@ class CheckoutsController < ApplicationController
   before_action :check_order, except: :completed
 
   def address
+    authorize! :read, @order
     @order.build_both_addresses
     @countries = Country.all
     # byebug
   end
 
   def update_address
+    authorize! :update, @order
     if @order.updating_both_addresses(addresses_params, params[:coping_billing_address])
       redirect_to checkouts_delivery_path
     else
@@ -20,10 +22,12 @@ class CheckoutsController < ApplicationController
   end
 
   def delivery
+    authorize! :read, @order
     @deliveries = Delivery.all
   end
 
   def update_delivery
+    authorize! :update, @order
     begin @order.update_attributes(delivery_params)
       redirect_to checkouts_payment_path
     rescue
@@ -33,10 +37,12 @@ class CheckoutsController < ApplicationController
   end
 
   def payment
+    authorize! :read, @order
     @order.building_credit_card
   end
 
   def update_payment
+    authorize! :update, @order
     if @order.update_attributes(credit_card_params)
       redirect_to checkouts_confirm_path
     else
@@ -46,11 +52,13 @@ class CheckoutsController < ApplicationController
   end
 
   def confirm
+    authorize! :read, @order
     check_confirm
     @order
   end
 
   def place_order
+    authorize! :update, @order
     if @order.billing_address.valid? && @order.delivery.valid? && @order.credit_card.valid?
       @order.process!
       redirect_to checkouts_completed_path

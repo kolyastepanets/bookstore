@@ -50,7 +50,7 @@ div class="row"
               | ×
             = content_tag :div, msg, :id => "flash_#{name}"
 
-      - @book.reviews.each do |review|
+      - @reviews.each do |review|
         div class="row the-whole-review"
           div class="col-xs-12"
             table class="table"

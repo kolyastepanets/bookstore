@@ -2,6 +2,8 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_book, only: [:new, :create]
 
+  load_and_authorize_resource
+
   def new
     @review = Review.new
   end

@@ -51,6 +51,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.2)
+    cancancan (1.12.0)
     capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
@@ -274,6 +275,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   byebug
+  cancancan (~> 1.10)
   capybara
   capybara-screenshot
   codeclimate-test-reporter

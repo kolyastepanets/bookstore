@@ -3,11 +3,10 @@ class User < ActiveRecord::Base
 
   has_many :orders
   has_one :shipping_address, as: :addressable, class_name: "ShippingAddress"
-  has_one :billing_address, as: :addressable, class_name: "BillingAddress"
+  accepts_nested_attributes_for :shipping_address
 
-  def current_admin
-    current_user && current_user.admin
-  end
+  has_one :billing_address, as: :addressable, class_name: "BillingAddress"
+  accepts_nested_attributes_for :billing_address
 
   scope :admin, -> { User.where(admin: true) }
 
@@ -15,4 +14,5 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
 end

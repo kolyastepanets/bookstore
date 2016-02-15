@@ -99,6 +99,14 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model "Review" do
+    edit do
+      field :title
+      field :content
+      field :approved
+    end
+  end
+
   config.model "User" do
     edit do
       field :admin

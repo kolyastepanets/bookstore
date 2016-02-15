@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_scope :user do
+    patch 'update_email' => 'registrations#update_email'
+    patch 'update_password' => 'registrations#update_password'
+    patch 'update_billing_address' => 'registrations#update_billing_address'
+    patch 'update_shipping_address' => 'registrations#update_shipping_address'
+  end
 
   root 'static_pages#home'
 
@@ -15,6 +21,13 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resources :addresses
+
+  # namespace :users do
+  #   patch 'update_email'
+  #   patch 'update_password'
+  #   patch 'update_billing_address'
+  #   patch 'update_shipping_address'
+  # end
 
   namespace 'checkouts' do
     get 'address'

@@ -3,6 +3,7 @@ class OrderItemsController < ApplicationController
   before_action :set_current_order
 
   def create
+    authorize! :create, OrderItem
     @order_item = @order.add_book(params[:book_id], params[:quantity], params[:price])
 
     if @order_item.save
@@ -13,6 +14,7 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, OrderItem
     @order = current_user.orders.in_progress.last
     order_item = @order.order_items.find(params[:id])
     order_item.destroy
