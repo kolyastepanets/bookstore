@@ -24,9 +24,9 @@ feature 'user can navigate site by categories', %q{
     click_on "ADD"
 
 
-    expect(page).to have_content "first_title"
-    expect(page).to have_content "content"
-    expect(page).to have_content "5"
+    expect(page).to have_content "Before publish your review will be checked by moderator"
+    expect(page).to_not have_content "first_title"
+    expect(page).to_not have_content "content"
 
   end
 

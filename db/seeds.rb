@@ -10,6 +10,7 @@ Category.delete_all
 Author.delete_all
 User.delete_all
 Country.delete_all
+Authorization.delete_all
 
 Book.create(title: "The Ruby Programming Language",
             description: %{
