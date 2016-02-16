@@ -2,43 +2,31 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => {:registrations => "registrations"}
   devise_scope :user do
-    patch 'update_email' => 'registrations#update_email'
     patch 'update_password' => 'registrations#update_password'
-    patch 'update_billing_address' => 'registrations#update_billing_address'
-    patch 'update_shipping_address' => 'registrations#update_shipping_address'
   end
 
   root 'static_pages#home'
 
-  resources :books do
-    resources :reviews
+  resources :books, only: [:index, :show] do
+    resources :reviews, only: [:new, :create]
   end
 
-  resources :authors
-  resources :categories
-  resources :order_items
+  resources :authors, only: :show
+  resources :categories, only: :show
+  resources :order_items, only: [:create, :destroy]
 
-  resources :carts
-  resources :orders
-  resources :addresses
-
-  # namespace :users do
-  #   patch 'update_email'
-  #   patch 'update_password'
-  #   patch 'update_billing_address'
-  #   patch 'update_shipping_address'
-  # end
+  resources :carts, only: [:show, :update, :destroy]
+  resources :orders, only: [:index, :show]
 
   namespace 'checkouts' do
-    get 'address'
-    get 'delivery'
-    get 'payment'
-    get 'confirm'
-    get 'completed'
-    patch 'update_address'
-    patch 'update_delivery'
-    patch 'update_payment'
-    patch 'place_order'
+    resources :addresses, only: [:edit, :update]
+    resources :deliveries, only: [:edit, :update]
+    resources :payments, only: [:edit, :update]
+    resources :confirms, only: [:show, :update] do
+      member do
+        get :completed
+      end
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -26,6 +26,7 @@ class Ability
 
     can :read, [Order]
     can :new, [Review]
+    can :edit, [Order]
     can :create, [Review, OrderItem]
     can :update, [Order]
     can :destroy, [Order, OrderItem]

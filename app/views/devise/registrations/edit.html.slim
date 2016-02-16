@@ -20,7 +20,7 @@ div class="row columns-addresses"
       div class="col-xs-12 title-user-address"
         h4 BILLING ADDRESS
       div class="col-xs-7"
-        = form_for current_user, url: update_billing_address_path do |f|
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
           = f.fields_for :billing_address do |bil|
             = bil.text_field :first_name, placeholder: 'First name*', class: 'form-control address-input-field'
             = bil.text_field :last_name, placeholder: 'Last name*', class: 'form-control address-input-field'
@@ -29,13 +29,13 @@ div class="row columns-addresses"
             = bil.select(:country_id, options_from_collection_for_select(@countries, "id", "name"), { prompt: "Country*" }, {class: 'form-control address-input-field'})
             = bil.text_field :zip, placeholder: 'Zip*', class: 'form-control address-input-field'
             = bil.text_field :phone, placeholder: 'Phone*', class: 'form-control address-input-field'
-          = f.submit "SAVE", class: "btn btn-primary address-input-field"
+          = f.submit "SAVE", name: 'billing_address_update', class: "btn btn-primary address-input-field"
 
     div class="col-xs-6 each-address-column"
       div class="col-xs-12 title-user-address"
         h4 SHIPPING ADDRESS
       div class="col-xs-7 form-for-shipping"
-        = form_for current_user, url: update_shipping_address_path do |f|
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
           = f.fields_for :shipping_address do |ship|
             = ship.text_field :first_name, placeholder: 'First name*', class: 'form-control address-input-field'
             = ship.text_field :last_name, placeholder: 'Last name*', class: 'form-control address-input-field'
@@ -44,16 +44,16 @@ div class="row columns-addresses"
             = ship.select(:country_id, options_from_collection_for_select(@countries, "id", "name"), { prompt: "Country*" }, {class: 'form-control address-input-field'})
             = ship.text_field :zip, placeholder: 'Zip*', class: 'form-control address-input-field'
             = ship.text_field :phone, placeholder: 'Phone*', class: 'form-control address-input-field'
-          = f.submit "SAVE", class: "btn btn-primary address-input-field"
+          = f.submit "SAVE", name: 'shipping_address_update', class: "btn btn-primary address-input-field"
 
   div class="col-xs-12 all-addresses"
     div class="col-xs-6 each-address-column"
       div class="col-xs-12 title-user-address"
         h4 EMAIL
       div class="col-xs-7"
-        = form_for current_user, url: update_email_path do |f|
-          = f.email_field :email, autofocus: true, class: "form-control address-input-field"
-          = f.submit "SAVE", class: "btn btn-primary address-input-field"
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          = f.text_field :email, class: "form-control address-input-field"
+          = f.submit "SAVE", name: 'email_update', class: "btn btn-primary address-input-field"
 
     div class="col-xs-6 each-address-column"
       div class="col-xs-12 title-user-address"
@@ -66,7 +66,7 @@ div class="row columns-addresses"
           = f.label :password, "New password", class: "address-input-field"
           = f.password_field :password, placeholder: 'type new password', class: "form-control"
 
-          = f.submit "SAVE", class: "btn btn-primary address-input-field"
+          = f.submit "SAVE", name: 'password_update', class: "btn btn-primary address-input-field"
 
   div class="col-xs-12 all-addresses"
     div class="col-xs-12 title-user-address"

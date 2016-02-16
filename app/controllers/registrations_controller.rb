@@ -6,51 +6,41 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def update_email
-    if current_user.update(email_params)
-      flash[:notice] = "Your email has been updated successefully"
+  def update
+    # binding.pry
+    params_to_update = detect_form
+
+    if current_user.update_attributes(params_to_update)
+      flash[:notice] = "Your parameter has been updated successefully"
       redirect_to edit_user_registration_path
     else
-      flash[:alert] = current_user.errors.full_messages.join(", ")
-      redirect_to edit_user_registration_path
+      @countries = Country.all
+      render :edit
     end
   end
 
   def update_password
     if current_user.update_with_password(password_params)
+      flash[:notice] = "Your password has been updated successefully"
       sign_in current_user, :bypass => true
-      flash[:notice] = "Your password has been updated successfully"
       redirect_to edit_user_registration_path
     else
-      flash[:alert] = current_user.errors.full_messages.join(", ")
-      redirect_to edit_user_registration_path
+      @countries = Country.all
+      render :edit
     end
   end
 
-  def update_billing_address
-    # building_billing_address
-    if current_user.update(billing_params)
-      flash[:notice] = "Your billing address has been updated successfully"
-      redirect_to edit_user_registration_path
-    else
-      flash[:alert] = current_user.billing_address.errors.full_messages.join(", ")
-      redirect_to edit_user_registration_path
-    end
-  end
+  private
 
-  def update_shipping_address
-    if current_user.update(shipping_params)
-      # byebug
-      Rails.logger.info(current_user.shipping_address.errors.inspect)
-      flash[:notice] = "Your shipping address has been updated successfully"
-      redirect_to edit_user_registration_path
-    else
-      byebug
-      Rails.logger.info(current_user.shipping_address.errors.inspect)
-      flash[:alert] = current_user.shipping_address.errors.full_messages.join(", ")
-      redirect_to edit_user_registration_path
+    def detect_form
+      if params.include?(:email_update)
+        email_params
+      elsif params.include?(:billing_address_update)
+        billing_params
+      elsif params.include?(:shipping_address_update)
+        shipping_params
+      end
     end
-  end
 
   private
 

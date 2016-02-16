@@ -26,4 +26,8 @@ class OrderItemsController < ApplicationController
     def order_item_params
       params.require(:order_item).permit(:quantity, :book_id)
     end
+
+    def set_current_order
+      order_in_progress ? @order = order_in_progress : create_order
+    end
 end

@@ -19,10 +19,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_current_order
-    order_in_progress ? @order = order_in_progress : create_order
-  end
-
   def create_order
     @order = current_user.orders.create
   end

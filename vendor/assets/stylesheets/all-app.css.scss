@@ -6,7 +6,11 @@ body {
 }
 
 
-
+body {
+  input:focus {
+    border-color: none !important;
+  };
+}
 
 
 
@@ -675,4 +679,14 @@ td.text-right.total-price-in-order {
 
 .checbox-for-user:last-child {
   margin-top: 25px;
+}
+
+
+
+
+
+.field_with_errors {
+  input {
+    border-color: red;
+  }
 }

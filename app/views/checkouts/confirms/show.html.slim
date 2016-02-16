@@ -7,19 +7,19 @@ div class="row"
       div class="col-xs-2 link-in-order"
         h4 class="#{is_active?("address")}"
           - if @order.billing_address.valid? && @order.shipping_address.valid?
-            = link_to "ADDRESS", checkouts_address_path
+            = link_to "ADDRESS", edit_checkouts_address_path(@order)
           - else
             | ADDRESS
       div class="col-xs-2 link-in-order"
         h4 class="#{is_active?("delivery")}"
           - if !@order.delivery.nil?
-            = link_to "DELIVERY", checkouts_delivery_path
+            = link_to "DELIVERY", edit_checkouts_delivery_path(@order)
           - else
             | DELIVERY
       div class="col-xs-2 link-in-order"
         h4 class="#{is_active?("payment")}"
           - if @order.credit_card.valid?
-            = link_to "PAYMENT", checkouts_payment_path
+            = link_to "PAYMENT", edit_checkouts_payment_path(@order)
           - else
             | PAYMENT
       div class="col-xs-2 link-in-order"
@@ -152,5 +152,5 @@ div class="row columns-addresses"
           p class="p-book-price-in-cart"
             = number_to_currency @order.total_price_with_delivery
 
-    = form_for @order, url: checkouts_place_order_path  do |f|
+    = form_for @order, url: checkouts_confirm_path(@order) do |f|
       = f.submit "PLACE ORDER", class: "btn btn-primary address-input-field"
