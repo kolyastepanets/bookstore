@@ -52,6 +52,7 @@ group :development, :test do
   gem "capybara"
   gem 'capybara-screenshot'
   gem 'selenium-webdriver'
+  gem 'dotenv-rails'
 end
 
 group :development do
