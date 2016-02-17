@@ -63,6 +63,23 @@ class Order < ActiveRecord::Base
     total_price + delivery_price
   end
 
+  def build_both_addresses
+    building_billing_address
+    building_shipping_address
+  end
+
+  def building_billing_address
+    build_billing_address unless billing_address
+  end
+
+  def building_shipping_address
+    build_shipping_address unless shipping_address
+  end
+
+  def building_credit_card
+    build_credit_card unless credit_card
+  end
+
   private
 
     def update_total_price
