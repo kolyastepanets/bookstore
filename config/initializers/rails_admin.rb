@@ -135,4 +135,8 @@ RailsAdmin.config do |config|
     visible false
   end
 
+  config.model 'Authorization' do
+    visible false
+  end
+
 end

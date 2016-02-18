@@ -1,8 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_action :load_countries
+
   def edit
     building_shipping_address
     building_billing_address
-    @countries = Country.all
     super
   end
 
@@ -14,7 +15,6 @@ class RegistrationsController < Devise::RegistrationsController
       flash[:notice] = "Your parameter has been updated successefully"
       redirect_to edit_user_registration_path
     else
-      @countries = Country.all
       render :edit
     end
   end
@@ -25,7 +25,6 @@ class RegistrationsController < Devise::RegistrationsController
       sign_in current_user, :bypass => true
       redirect_to edit_user_registration_path
     else
-      @countries = Country.all
       render :edit
     end
   end
@@ -43,6 +42,10 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
   private
+
+    def load_countries
+      @countries = Country.all
+    end
 
     def building_shipping_address
       current_user.build_shipping_address unless current_user.shipping_address

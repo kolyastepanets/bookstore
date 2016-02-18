@@ -1,7 +1,7 @@
 - if @order.nil?
   p class="text-center"
     | There are no items in your shopping cart. Please
-    =' link_to "go back", root_path
+    => link_to "go back", root_path
     | and add some items to your cart.
 - else
     = form_tag cart_path, method: "patch" do
