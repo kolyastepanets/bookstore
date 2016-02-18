@@ -73,11 +73,24 @@ class Order < ActiveRecord::Base
   end
 
   def building_billing_address
-    build_billing_address unless billing_address
+    unless billing_address
+      if current_user.billing_address.present?
+        build_billing_address(current_user.billing_address.attributes)
+      else
+        build_billing_address
+      end
+    end
   end
 
   def building_shipping_address
-    build_shipping_address unless shipping_address
+    unless shipping_address
+      if current_user.shipping_address.present?
+        build_shipping_address(current_user.shipping_address.attributes)
+      else
+        build_shipping_address
+      end
+    end
+
   end
 
   def building_credit_card
@@ -85,6 +98,10 @@ class Order < ActiveRecord::Base
   end
 
   private
+
+    def current_user
+      user
+    end
 
     def update_total_price
       self.total_price = total_price_with_delivery
