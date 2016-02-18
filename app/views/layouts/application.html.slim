@@ -32,10 +32,8 @@ html
                   - if @order.order_items.size == 0
                     p class="empty-cart"
                       | (Empty Cart)
-                  - elsif @order.order_items.size == 1
-                    = link_to "#{@order.order_items.size} Item ( #{number_to_currency @order.total_price} )", cart_path(@order), class: "btn btn-link"
                   - else
-                    = link_to "#{@order.order_items.size} Items ( #{number_to_currency @order.total_price} )", cart_path(@order), class: "btn btn-link"
+                    = link_to "#{@order.total_quantity} ( #{number_to_currency @order.total_price} )", cart_path(@order), class: "btn btn-link"
                 - else
                   p class="empty-cart"
                     | (Empty Cart)

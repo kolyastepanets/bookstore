@@ -1,6 +1,6 @@
 class Checkouts::AddressesController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_countries, only: :edit
+  before_action :load_countries
   before_action :check_order
 
   def edit
@@ -22,7 +22,6 @@ class Checkouts::AddressesController < ApplicationController
     if @order.update_attributes(new_params)
       redirect_to edit_checkouts_delivery_path
     else
-      @countries = Country.all
       render :edit
     end
 

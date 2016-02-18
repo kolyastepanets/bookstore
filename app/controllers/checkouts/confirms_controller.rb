@@ -3,7 +3,7 @@ class Checkouts::ConfirmsController < ApplicationController
   before_action :check_order, except: :completed
 
   def show
-    authorize! :read, @order
+    authorize! :show, @order
     check_confirm
   end
 

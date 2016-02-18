@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   # load_and_authorize_resource
 
   def show
-    authorize! :read, @order
+    authorize! :show, @order
   end
 
   def update

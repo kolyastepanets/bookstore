@@ -1,6 +1,6 @@
 class Checkouts::DeliveriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_deliveries, only: :edit
+  before_action :load_deliveries
   before_action :check_order
 
   def edit
@@ -12,7 +12,6 @@ class Checkouts::DeliveriesController < ApplicationController
     begin @order.update_attributes(delivery_params)
       redirect_to edit_checkouts_payment_path
     rescue
-      @deliveries = Delivery.all
       flash[:alert] = "Please, choose delivery."
       render :edit
     end

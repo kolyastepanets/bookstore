@@ -24,12 +24,12 @@ class Ability
   def user_abilities
     guest_abilities
 
-    can :read, [Order]
+    alias_action :read, :edit, :update, :destroy, :to => :crud
+    can :crud, [Order]
     can :new, [Review]
-    can :edit, [Order]
     can :create, [Review, OrderItem]
-    can :update, [Order]
-    can :destroy, [Order, OrderItem]
+    can :destroy, [OrderItem]
+
   end
 
 end

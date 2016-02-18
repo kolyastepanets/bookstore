@@ -63,6 +63,10 @@ class Order < ActiveRecord::Base
     total_price + delivery_price
   end
 
+  def total_quantity
+    order_items.to_a.sum { |item| item.quantity }
+  end
+
   def build_both_addresses
     building_billing_address
     building_shipping_address
