@@ -1,8 +1,6 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
 
-  # load_and_authorize_resource
-
   def show
     authorize! :show, @order
   end

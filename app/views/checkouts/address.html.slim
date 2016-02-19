@@ -5,31 +5,34 @@ div class="row"
         | Checkout
     div class="col-xs-9"
       div class="col-xs-2 link-in-order"
-        h4 class="#{is_active?("address")}"
+        h4 class="#{is_active?(step.to_s)}"
           - if @order.billing_address.nil? && @order.shipping_address.nil?
             | ADDRESS
           - else
-            = link_to "ADDRESS", edit_checkouts_address_path(@order)
+            = link_to "ADDRESS", wizard_path(:address)
       div class="col-xs-2 link-in-order"
-        h4 class="#{is_active?("delivery")}"
+        h4
           - if !@order.delivery.nil?
-            = link_to "DELIVERY", edit_checkouts_delivery_path(@order)
+            = link_to "DELIVERY", wizard_path(:delivery)
           - else
             | DELIVERY
       div class="col-xs-2 link-in-order"
-        h4 class="#{is_active?("payment")}"
+        h4
           - if @order.credit_card.nil?
             | PAYMENT
           - else
-            = link_to "PAYMENT", edit_checkouts_payment_path(@order)
+            = link_to "PAYMENT", wizard_path(:payment)
       div class="col-xs-2 link-in-order"
-        h4 class="#{is_active?("confirm")}"
-          | CONFIRM
+        h4
+          - if @order.credit_card && @order.billing_address.valid? && @order.shipping_address.valid? && !@order.delivery.nil?
+            = link_to "CONFIRM", wizard_path(:confirm)
+          - else
+            | CONFIRM
       div class="col-xs-2 link-in-order"
         h4
           | COMPLETE
 
-= form_for @order, url: checkouts_address_path(@order)  do |f|
+= form_for @order, url: wizard_path, method: :patch  do |f|
   div class="row columns-addresses"
     div class="col-xs-12 all-addresses"
       div class="col-xs-4 each-address-column"
@@ -37,6 +40,13 @@ div class="row"
           h4 BILLING ADDRESS
         div class="col-xs-12"
           = f.fields_for :billing_address do |bil|
+            - if @order.billing_address.errors.any?
+              #error_explanation
+                - @order.billing_address.errors.full_messages.each do |msg|
+                  div class="alert alert-danger"
+                    button.close[type="button" data-dismiss="alert" aria-hidden="true"]
+                      | ×
+                    = msg
             = bil.text_field :first_name, placeholder: 'First name*', class: 'form-control address-input-field'
             = bil.text_field :last_name, placeholder: 'Last name*', class: 'form-control address-input-field'
             = bil.text_field :street, placeholder: 'Street Address*', class: 'form-control address-input-field'
@@ -53,6 +63,14 @@ div class="row"
           | Use Billing Address
         div class="col-xs-12 form-for-shipping"
           = f.fields_for :shipping_address do |ship|
+            - if @order.shipping_address.errors.any?
+              #error_explanation
+                - @order.shipping_address.errors.full_messages.each do |msg|
+                  div class="alert alert-danger"
+                    button.close[type="button" data-dismiss="alert" aria-hidden="true"]
+                      | ×
+                    = msg
+
             = ship.text_field :first_name, placeholder: 'First name*', class: 'form-control address-input-field'
             = ship.text_field :last_name, placeholder: 'Last name*', class: 'form-control address-input-field'
             = ship.text_field :street, placeholder: 'Street Address*', class: 'form-control address-input-field'

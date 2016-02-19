@@ -1,6 +1,6 @@
 module ApplicationHelper
   def is_active?(action)
-    "active-link" if params[:action] == action
+    "active-link" if step.to_s == action
   end
 
   def order_in_progress

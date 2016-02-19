@@ -1,4 +1,4 @@
-- if @order.nil?
+- if @order.order_items.empty?
   p class="text-center"
     | There are no items in your shopping cart. Please
     => link_to "go back", root_path
@@ -60,4 +60,4 @@
             td
               = submit_tag "Update", class: "btn btn-primary btn-update-quantity"
             td
-              = link_to 'CHECKOUT', edit_checkouts_address_path(@order), class: "btn btn-primary"
+              = link_to 'CHECKOUT', checkout_path(:address), class: "btn btn-primary"

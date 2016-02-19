@@ -17,16 +17,23 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :destroy]
 
   resources :carts, only: [:show, :update, :destroy]
+
   resources :orders, only: [:index, :show]
 
-  namespace 'checkouts' do
-    resources :addresses, only: [:edit, :update]
-    resources :deliveries, only: [:edit, :update]
-    resources :payments, only: [:edit, :update]
-    resources :confirms, only: [:show, :update] do
-      member do
-        get :completed
-      end
+  # namespace 'checkouts' do
+  #   resources :addresses, only: [:edit, :update]
+  #   resources :deliveries, only: [:edit, :update]
+  #   resources :payments, only: [:edit, :update]
+  #   resources :confirms, only: [:show, :update] do
+  #     member do
+  #       get :completed
+  #     end
+  #   end
+  # end
+
+  resources :checkouts, only: [:show, :update] do
+    member do
+      get :completed
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
