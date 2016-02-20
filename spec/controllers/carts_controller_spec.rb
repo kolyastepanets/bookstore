@@ -4,8 +4,16 @@ RSpec.describe CartsController, type: :controller do
   let(:user) { create(:user) }
   let(:order) { create(:order, user: user) }
 
+  before do
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    expect(@controller).to receive(:current_ability).and_return(@ability)
+    @ability.can :manage, :all
+
+    sign_in(user)
+  end
+
   describe 'GET #show' do
-    before { sign_in(user) }
     before { get :show, id: order, user: user }
 
     it 'assigns order to @order' do
@@ -18,8 +26,6 @@ RSpec.describe CartsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    before { sign_in(user) }
-
     before { order }
 
     it 'deletes order' do
