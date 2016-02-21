@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
 
   def set_order
     if current_user
-      if order_in_progress
-        @order = order_in_progress
+      if current_order
+        @order = current_order
       end
     end
   end
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     @order = current_user.orders.create
   end
 
-  def order_in_progress
+  def current_order
     current_user.orders.in_progress.last
     # byebug
   end
@@ -43,6 +43,10 @@ class ApplicationController < ActionController::Base
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath
     end
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to books_path, alert: exception.message
   end
 
   private

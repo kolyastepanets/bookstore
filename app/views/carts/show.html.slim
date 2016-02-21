@@ -1,4 +1,4 @@
-- if @order.order_items.empty?
+- if @order.nil? || @order.order_items.empty?
   p class="text-center"
     | There are no items in your shopping cart. Please
     => link_to "go back", root_path
@@ -32,7 +32,6 @@
                 = number_to_currency order_item.unit_price
               td
                 = f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1
-                = f.hidden_field :book_id, value: order_item.book.id
 
               td class="book-price-in-cart"
                 = number_to_currency order_item.total_price

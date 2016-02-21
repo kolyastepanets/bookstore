@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe CartsController, type: :controller do
   let(:user) { create(:user) }
-  let(:order) { create(:order, user: user) }
+  let(:book) { create(:book) }
+  let(:book2) { create(:book) }
+  let!(:order_item) { create(:order_item, book: book) }
+  let!(:order_item2) { create(:order_item, book: book2) }
+  let!(:order) { create(:order, order_items: [order_item, order_item2], user: user) }
 
   before do
     @ability = Object.new
@@ -22,6 +26,23 @@ RSpec.describe CartsController, type: :controller do
 
     it 'renders show view' do
       expect(response).to render_template :show
+    end
+  end
+
+  describe 'PATCH #update' do
+    context "with valid attributes" do
+    before { allow(controller).to receive(:current_order).and_return(order) }
+
+      it "changes the order_item's quantity" do
+        patch :update, id: order_item, order_id: order, items: { order_item.id => { quantity: 2 } }
+        # binding.pry
+        expect(assigns(:order)).not_to be_nil
+      end
+
+      it 'redirect to order' do
+        patch :update, id: order_item, items: { order_item.id => { quantity: 2 } }
+        expect(response).to redirect_to cart_path(order)
+      end
     end
   end
 

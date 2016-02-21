@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe ReviewsController, type: :controller do
+  let(:user) { create(:user) }
   let(:book) { create(:book) }
-  let(:review) { create(:review, book: book) }
+  let(:review) { create(:review, book: book, user: user) }
 
   describe 'GET #new' do
     sign_in_user

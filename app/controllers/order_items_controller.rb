@@ -4,10 +4,8 @@ class OrderItemsController < ApplicationController
 
   def create
     authorize! :create, OrderItem
-    @order_item = @order.add_book(params[:book_id], params[:quantity], params[:price])
-
-    if @order_item.save
-      redirect_to cart_path(@order)
+    if current_order.add_book(params[:book_id], params[:quantity], params[:price])
+      redirect_to cart_path(current_order)
     else
       redirect_to book_path(params[:book_id])
     end
@@ -15,10 +13,9 @@ class OrderItemsController < ApplicationController
 
   def destroy
     authorize! :destroy, OrderItem
-    @order = current_user.orders.in_progress.last
-    order_item = @order.order_items.find(params[:id])
+    order_item = current_order.order_items.find(params[:id])
     order_item.destroy
-    redirect_to cart_path(@order)
+    redirect_to cart_path(current_order)
   end
 
   private
@@ -28,6 +25,7 @@ class OrderItemsController < ApplicationController
     end
 
     def set_current_order
-      order_in_progress ? @order = order_in_progress : create_order
+      current_order ? current_order : create_order
     end
+
 end

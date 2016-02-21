@@ -6,7 +6,6 @@ class OrderItem < ActiveRecord::Base
   belongs_to :book
   belongs_to :order
 
-
   def unit_price
     if persisted?
       self.price

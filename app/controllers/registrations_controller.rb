@@ -1,5 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   before_action :load_countries
+  before_action :set_user
 
   def edit
     building_shipping_address
@@ -11,8 +12,8 @@ class RegistrationsController < Devise::RegistrationsController
     # binding.pry
     params_to_update = detect_form
 
-    if current_user.update_attributes(params_to_update)
-      flash[:notice] = "Your parameter has been updated successefully"
+    if @user.update_attributes(params_to_update)
+      flash[:notice] = "Your settings has been updated successefully"
       redirect_to edit_user_registration_path
     else
       render :edit
@@ -20,9 +21,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update_password
-    if current_user.update_with_password(password_params)
+    if @user.update_with_password(password_params)
       flash[:notice] = "Your password has been updated successefully"
-      sign_in current_user, :bypass => true
+      sign_in @user, :bypass => true
       redirect_to edit_user_registration_path
     else
       render :edit
@@ -41,18 +42,20 @@ class RegistrationsController < Devise::RegistrationsController
       end
     end
 
-  private
-
     def load_countries
       @countries = Country.all
     end
 
+    def set_user
+      @user = current_user
+    end
+
     def building_shipping_address
-      current_user.build_shipping_address unless current_user.shipping_address
+      @user.build_shipping_address unless @user.shipping_address
     end
 
     def building_billing_address
-      current_user.build_billing_address unless current_user.billing_address
+      @user.build_billing_address unless @user.billing_address
     end
 
     def email_params

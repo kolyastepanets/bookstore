@@ -2,19 +2,18 @@ class CartsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    authorize! :show, @order
+    authorize! :show, Order
   end
 
   def update
-    authorize! :update, @order
-    @order = current_user.orders.in_progress.last
-    @order.order_items.update(params[:items].keys, params[:items].values)
+    authorize! :update, Order
+    current_order.order_items.update(params[:items].keys, params[:items].values)
+    # binding.pry
     redirect_to cart_path(@order)
-
   end
 
   def destroy
-    authorize! :destroy, @order
+    authorize! :destroy, Order
     @order.destroy
     redirect_to books_path
   end

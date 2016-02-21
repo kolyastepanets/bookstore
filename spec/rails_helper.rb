@@ -9,6 +9,7 @@ require 'cancan/matchers'
 require 'capybara/rspec'
 require 'capybara-screenshot'
 require 'capybara-screenshot/rspec'
+require 'devise'
 
 # require 'shoulda/matchers'
 # Add additional requires below this line. Rails is not loaded until this point!

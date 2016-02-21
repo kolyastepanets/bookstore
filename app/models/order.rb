@@ -46,9 +46,8 @@ class Order < ActiveRecord::Base
     if current_item
       current_item.update_attributes(quantity: current_item.quantity + quantity.to_i)
     else
-      current_item = order_items.build(book_id: book_id, quantity: quantity, price: price)
+      current_item = order_items.create(book_id: book_id, quantity: quantity, price: price)
     end
-    current_item
   end
 
   def total_price
