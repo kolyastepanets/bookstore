@@ -73,7 +73,11 @@ class CheckoutsController < ApplicationController
 
   def completed
     # binding.pry
-    @proccesing_order = Order.find(session[:order_id])
+    begin
+      @proccesing_order = Order.find(session[:order_id])
+    rescue
+      redirect_to books_path
+    end
   end
 
   private

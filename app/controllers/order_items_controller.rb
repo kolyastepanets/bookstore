@@ -20,10 +20,6 @@ class OrderItemsController < ApplicationController
 
   private
 
-    def order_item_params
-      params.require(:order_item).permit(:quantity, :book_id)
-    end
-
     def set_current_order
       current_order ? current_order : create_order
     end
