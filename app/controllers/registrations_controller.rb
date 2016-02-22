@@ -3,13 +3,12 @@ class RegistrationsController < Devise::RegistrationsController
   before_action :set_user
 
   def edit
-    building_shipping_address
-    building_billing_address
+    @user.build_shipping_address unless @user.shipping_address
+    @user.build_billing_address unless @user.billing_address
     super
   end
 
   def update
-    # binding.pry
     params_to_update = detect_form
 
     if @user.update_attributes(params_to_update)
@@ -22,6 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update_password
     if @user.update_with_password(password_params)
+      # binding.pry
       flash[:notice] = "Your password has been updated successefully"
       sign_in @user, :bypass => true
       redirect_to edit_user_registration_path
@@ -48,14 +48,6 @@ class RegistrationsController < Devise::RegistrationsController
 
     def set_user
       @user = current_user
-    end
-
-    def building_shipping_address
-      @user.build_shipping_address unless @user.shipping_address
-    end
-
-    def building_billing_address
-      @user.build_billing_address unless @user.billing_address
     end
 
     def email_params

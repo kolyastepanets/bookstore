@@ -9,6 +9,38 @@ RSpec.describe RegistrationsController, type: :controller do
     allow(controller).to receive(:current_user) { user }
   end
 
+  describe 'GET #edit' do
+    it 'assigns user to @user' do
+      get :edit, id: user
+      expect(assigns(:user)).to eq user
+    end
+
+    it "builds addresses" do
+      user.billing_address = nil
+      user.shipping_address = nil
+      expect(user).to receive(:build_shipping_address)
+      expect(user).to receive(:build_billing_address)
+      get :edit, id: user
+    end
+
+    it "does not build billing address if address exist" do
+      user.build_billing_address
+      expect(user).to_not receive(:build_billing_address)
+      get :edit, id: user
+    end
+
+    it "does not build shipping address if address exist" do
+      user.build_shipping_address
+      expect(user).to_not receive(:build_shipping_address)
+      get :edit, id: user
+    end
+
+    it 'renders #edit' do
+      get :edit, id: user
+      expect(response).to render_template :edit
+    end
+  end
+
   describe 'PATCH #update_password' do
     context 'valid attributes' do
 

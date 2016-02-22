@@ -1,14 +1,35 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe CheckoutsController, type: :controller do
-#   let(:user) { create(:user) }
-#   let(:book) { create(:book) }
-#   let!(:order) { create(:order, user: user) }
-#   let!(:order_item) { create(:order_item, book: book, order: order) }
-#   let(:country) { create(:country) }
-#   let(:countries) { create_list(:country, 2) }
-#   let(:delivery) { create(:delivery) }
-#   let(:deliveries) { create_list(:delivery, 2) }
+RSpec.describe CheckoutsController, type: :controller do
+  let(:user) { create(:user) }
+  let(:book) { create(:book) }
+  let!(:order) { create(:order, user: user) }
+  let!(:order_item) { create(:order_item, book: book, order: order) }
+  let(:country) { create(:country) }
+  let(:countries) { create_list(:country, 2) }
+  let(:delivery) { create(:delivery) }
+  let(:deliveries) { create_list(:delivery, 2) }
+
+  # describe "GET #show" do
+  #   sign_in_user
+
+  #   context "address" do
+  #     it 'expect to assign countries' do
+  #       get :show, id: :address
+  #       expect(assigns(:countries)).not_to be_nil
+  #     end
+
+  #     it 'expect to receive build_addresses' do
+  #       expect(order).to receive(:build_both_addresses)
+  #       get :show, id: :address
+  #     end
+
+  #     it "render address" do
+  #       expect(get :show, id: :address).to render_template('address')
+  #     end
+  #   end
+
+  # end
 
 #   describe 'GET #address' do
 #     before { sign_in(user) }
@@ -30,7 +51,6 @@
 #   end
 
 #   describe "PATCH #update_address" do
-#     sign_in_user
 #     let(:billing_address) { create(:address) }
 #     let(:shipping_address) { create(:address) }
 
@@ -158,4 +178,4 @@
 #   describe "PATCH #place_order" do
 #   end
 
-# end
+end

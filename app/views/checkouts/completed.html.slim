@@ -10,52 +10,52 @@ div class="row columns-addresses"
             | Shipping Address
           div class="col-xs-12 column-info"
             p class="info"
-              = @processing_order.billing_address.first_name
+              = @proccesing_order.billing_address.first_name
             p class="info"
-              = @processing_order.billing_address.last_name
+              = @proccesing_order.billing_address.last_name
             p class="info"
-              = @processing_order.billing_address.street
+              = @proccesing_order.billing_address.street
             p class="info"
-              = @processing_order.billing_address.city
+              = @proccesing_order.billing_address.city
             p class="info"
-              = @processing_order.billing_address.country.name
+              = @proccesing_order.billing_address.country.name
             p class="info"
               | Phone
-              = @processing_order.billing_address.phone
+              = @proccesing_order.billing_address.phone
 
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
             | Billing Address
           div class="col-xs-12 column-info"
             p class="info"
-              = @processing_order.shipping_address.first_name
+              = @proccesing_order.shipping_address.first_name
             p class="info"
-              = @processing_order.shipping_address.last_name
+              = @proccesing_order.shipping_address.last_name
             p class="info"
-              = @processing_order.shipping_address.street
+              = @proccesing_order.shipping_address.street
             p class="info"
-              = @processing_order.shipping_address.city
+              = @proccesing_order.shipping_address.city
             p class="info"
-              = @processing_order.shipping_address.country.name
+              = @proccesing_order.shipping_address.country.name
             p class="info"
               | Phone
-              = @processing_order.shipping_address.phone
+              = @proccesing_order.shipping_address.phone
 
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
             | Shipments
           div class="col-xs-12 column-info"
             p class="info"
-              = @processing_order.delivery.name
+              = @proccesing_order.delivery.name
 
         td class="table-title-confirm"
           div class="col-xs-12 title-row"
             | Payment Information
           div class="col-xs-12 column-info"
             p class="info"
-              = hidden_number_card(@processing_order)
+              = hidden_number_card(@proccesing_order)
             p class="info"
-              = month_and_year(@processing_order)
+              = month_and_year(@proccesing_order)
 
     table class="table"
       tr
@@ -68,7 +68,7 @@ div class="row columns-addresses"
           | QTY
         td class="table-title"
           | TOTAL
-      - @processing_order.order_items.each do |order_item|
+      - @proccesing_order.order_items.each do |order_item|
         tr class="line-in-cart"
           td
             = link_to book_path(order_item.book)
@@ -92,13 +92,13 @@ div class="row columns-addresses"
           p class="p-book-price-in-cart"
             | SUBTOTAL:
           p class="p-book-price-in-cart"
-            = number_to_currency @processing_order.total_price
+            = number_to_currency @proccesing_order.total_price
       tr class="line-in-cart"
         td class="text-right ship-price"
           p class="p-book-price-in-cart"
             | SHIPPING:
           p class="p-book-price-in-cart"
-            = number_to_currency @processing_order.delivery_price
+            = number_to_currency @proccesing_order.delivery_price
 
     table class="table"
       tr
@@ -106,6 +106,6 @@ div class="row columns-addresses"
           p class="p-book-price-in-cart"
             | ORDER TOTAL:
           p class="p-book-price-in-cart"
-            = number_to_currency @processing_order.total_price_with_delivery
+            = number_to_currency @proccesing_order.total_price_with_delivery
 
     = link_to "GO BACK TO STORE", books_path, class: "btn btn-primary address-input-field"

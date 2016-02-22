@@ -31,6 +31,7 @@ class CheckoutsController < ApplicationController
           jump_to(:payment)
           flash[:alert] = "Please, fill in form"
         end
+        session[:order_id] = @order.id
         @order
 
     end
@@ -72,13 +73,17 @@ class CheckoutsController < ApplicationController
 
   def completed
     # binding.pry
-    @processing_order = order_in_process
+    @proccesing_order = Order.find(session[:order_id])
   end
 
   private
 
     def check_order
-      redirect_to completed_checkout_path if wizard_path(:wicked_finish) && @order.nil?
+      if wizard_path == "/checkouts/wicked_finish"
+        redirect_to completed_checkout_path
+      elsif !current_order
+        redirect_to books_path
+      end
     end
 
     def delivery_params
