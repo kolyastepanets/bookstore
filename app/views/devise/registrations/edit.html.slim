@@ -19,7 +19,7 @@ div class="row columns-addresses"
             = bil.select(:country_id, options_from_collection_for_select(@countries, "id", "name"), { prompt: "Country*" }, {class: 'form-control address-input-field'})
             = bil.text_field :zip, placeholder: 'Zip*', class: 'form-control address-input-field'
             = bil.text_field :phone, placeholder: 'Phone*', class: 'form-control address-input-field'
-          = f.submit "SAVE", name: 'billing_address_update', class: "btn btn-primary address-input-field"
+          = f.submit "SAVE", name: 'billing_address_update', class: "btn btn-primary save-billing-address"
 
     div class="col-xs-6 each-address-column"
       div class="col-xs-12 title-user-address"
@@ -34,7 +34,7 @@ div class="row columns-addresses"
             = ship.select(:country_id, options_from_collection_for_select(@countries, "id", "name"), { prompt: "Country*" }, {class: 'form-control address-input-field'})
             = ship.text_field :zip, placeholder: 'Zip*', class: 'form-control address-input-field'
             = ship.text_field :phone, placeholder: 'Phone*', class: 'form-control address-input-field'
-          = f.submit "SAVE", name: 'shipping_address_update', class: "btn btn-primary address-input-field"
+          = f.submit "SAVE", name: 'shipping_address_update', class: "btn btn-primary save-shipping-address"
 
   div class="col-xs-12 all-addresses"
     div class="col-xs-6 each-address-column"

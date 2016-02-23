@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-feature 'user can buy book', %q{
-  in order to buy book
-  i need to fill in addresses,
-  delivery, credit card
+feature 'user can view orders', %q{
+  in order to view status of each order
+  i can visit orders page
 } do
 
   given(:user) { create(:user) }
@@ -29,7 +28,7 @@ feature 'user can buy book', %q{
     fill_in "order_billing_address_attributes_city", with: 'city'
     fill_in "order_billing_address_attributes_zip", with: 123
     fill_in "order_billing_address_attributes_phone", with: 12345678
-    select "country_name5", :from => "order_billing_address_attributes_country_id"
+    select "country_name9", :from => "order_billing_address_attributes_country_id"
     # save_and_open_page
 
     fill_in "order_shipping_address_attributes_first_name", with: 'first_name'
@@ -38,7 +37,7 @@ feature 'user can buy book', %q{
     fill_in "order_shipping_address_attributes_city", with: 'city'
     fill_in "order_shipping_address_attributes_zip", with: 123123
     fill_in "order_shipping_address_attributes_phone", with: 1231212123
-    select "country_name6", :from => "order_shipping_address_attributes_country_id"
+    select "country_name10", :from => "order_shipping_address_attributes_country_id"
 
     click_on "SAVE AND CONTINUE"
 
@@ -55,8 +54,9 @@ feature 'user can buy book', %q{
 
     click_on "PLACE ORDER"
 
+    click_on "Orders"
 
-    expect(page).to have_link "GO BACK TO STORE"
+    expect(page).to have_content order.total_price
   end
 
 end
