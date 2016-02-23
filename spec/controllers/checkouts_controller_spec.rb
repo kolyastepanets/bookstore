@@ -3,179 +3,125 @@ require 'rails_helper'
 RSpec.describe CheckoutsController, type: :controller do
   let(:user) { create(:user) }
   let(:book) { create(:book) }
-  let!(:order) { create(:order, user: user) }
-  let!(:order_item) { create(:order_item, book: book, order: order) }
+  let(:book2) { create(:book) }
+  let!(:order_item) { create(:order_item, book: book) }
+  let!(:order_item2) { create(:order_item, book: book2) }
+  let!(:order) { create(:order, order_items: [order_item, order_item2], user: user) }
   let(:country) { create(:country) }
-  let(:countries) { create_list(:country, 2) }
+  let!(:countries) { create_list(:country, 2) }
   let(:delivery) { create(:delivery) }
   let(:deliveries) { create_list(:delivery, 2) }
 
-  # describe "GET #show" do
-  #   sign_in_user
+  before do
+    allow(controller).to receive(:current_order).and_return(order)
+  end
 
-  #   context "address" do
-  #     it 'expect to assign countries' do
-  #       get :show, id: :address
-  #       expect(assigns(:countries)).not_to be_nil
-  #     end
+  describe "GET #show" do
+    sign_in_user
 
-  #     it 'expect to receive build_addresses' do
-  #       expect(order).to receive(:build_both_addresses)
-  #       get :show, id: :address
-  #     end
+    context "address" do
+      it 'expect to assign countries' do
+        get :show, id: :address
+        expect(assigns(:countries)).not_to be_nil
+      end
 
-  #     it "render address" do
-  #       expect(get :show, id: :address).to render_template('address')
-  #     end
-  #   end
+      it 'expect to receive build_addresses' do
+        expect(order).to receive(:build_both_addresses)
+        get :show, id: :address
+      end
 
-  # end
+      it "render address" do
+        get :show, id: :address
+        expect(response).to render_template('address')
+      end
+    end
 
-#   describe 'GET #address' do
-#     before { sign_in(user) }
-#     before { get :address }
+    context "delivery" do
+      before do
+        allow(order).to receive(:billing_address).and_return(true)
+        allow(order).to receive(:shipping_address).and_return(true)
+      end
 
-#     it 'calls build_both_addresses on order' do
-#       order.build_both_addresses
-#       expect(order.billing_address).to_not be_nil
-#       expect(order.shipping_address).to_not be_nil
-#     end
+      it 'expect to assign deliveries' do
+        get :show, id: :delivery
+        expect(assigns(:deliveries)).not_to be_nil
+      end
 
-#     it "has array of countries" do
-#       expect(assigns(:countries)).to match_array(countries)
-#     end
+      it "render delivery" do
+        get :show, id: :delivery
+        expect(response).to render_template('delivery')
+      end
+    end
 
-#     it 'render address' do
-#       expect(response).to render_template :address
-#     end
-#   end
+    context "payment" do
+       before do
+        allow(order).to receive(:delivery).and_return(true)
+      end
 
-#   describe "PATCH #update_address" do
-#     let(:billing_address) { create(:address) }
-#     let(:shipping_address) { create(:address) }
+      it 'expect credit_card not to be nil' do
+        get :show, id: :delivery
+        expect(assigns(order.credit_card)).not_to be_nil
+      end
 
-#     context 'valid attributes' do
-#       it "assigns order.address" do
-#         patch :update_address, id: billing_address.id, id: shipping_address.id, order_id: order,
-#                                    billing_address: attributes_for(:billing_address),
-#                                    shipping_address: attributes_for(:shipping_address)
-#         expect(assigns(order.billing_address)).not_to be_nil
-#         expect(assigns(order.shipping_address)).not_to be_nil
-#       end
+      it "render payment" do
+        get :show, id: :payment
+        expect(response).to render_template('payment')
+      end
+    end
 
-#       # it "redirects to delivery page" do
-#       #   patch :update_address, id: billing_address.id, id: shipping_address, order_id: order,
-#       #                              billing_address: attributes_for(:billing_address),
-#       #                              shipping_address: attributes_for(:shipping_address)
-#       #   expect(response).to redirect_to checkouts_delivery_path
-#       # end
+    context "confirm" do
+      before do
+        allow(order).to receive(:credit_card).and_return(true)
+      end
 
+      it 'expect assigns to order' do
+        get :show, id: :confirm
+        expect(assigns(:order)).to eq order
+      end
 
-#     end
+      it "render confirm" do
+        get :show, id: :confirm
+        expect(response).to render_template('confirm')
+      end
+    end
 
-#     context 'invalid attributes' do
-#     end
-#   end
+  end
 
-#   describe "GET #delivery" do
-#     before { sign_in(user) }
-#     before { get :delivery }
+  describe "PATCH #update" do
 
-#     it "returns array of deliveries" do
-#       expect(assigns(:deliveries)).to match_array(deliveries)
-#     end
+    # context "address" do
+    #   it 'expect to assign countries' do
+    #     patch :update, id: :address
+    #     expect(assigns(:countries)).not_to be_nil
+    #   end
 
-#     it 'render delivery' do
-#       expect(response).to render_template :delivery
-#     end
-#   end
+ #      it "updates addresses" do
+ #        patch :update, id: :address, order: {:billing_address_attributes=>
+ #  {"first_name"=>"123", "last_name"=>"123", "street"=>"123123", "city"=>"123123", "zip"=>"12313", "phone"=>"12313", "country_id"=>"1"},
+ # :shipping_address_attributes=>
+ #  {"first_name"=>"123", "last_name"=>"123", "street"=>"123123", "city"=>"123123", "zip"=>"12313", "phone"=>"12313", "country_id"=>"1"} }
 
-#   describe "PATCH #update_delivery" do
+ #        binding.pry
+ #        expect(order.billing_address).to exist
+ #      end
+    # end
 
-#   end
+    # context "delivery" do
+    #   it "updates delivery" do
+    #     patch :update, { id: :delivery, order: { delivery_id: delivery.id } }
+    #     patch :update, {'id' => 'delivery', "order" => { "delivery_id" => delivery.id.to_s }}
+    #     expect(order.delivery).to_not be_nil
+    #   end
+    # end
 
-#   describe 'GET #payment' do
-#     before { sign_in(user) }
-#     before { get :payment }
+    # context "confirm" do
+    #   it "changes state's order" do
+    #     patch :update, {'id' => 'confirm'}
+    #     binding.pry
+    #     expect(order).to have_state(:in_processing)
+    #   end
+    # end
 
-#     it 'calls building_credit_card on order' do
-#       order.building_credit_card
-#       expect(order.credit_card).to_not be_nil
-#     end
-
-#     it 'render payment' do
-#       expect(response).to render_template :payment
-#     end
-#   end
-
-#   describe "PATCH #update_payment" do
-#     sign_in_user
-#     let(:credit_card) { create(:credit_card) }
-#     let(:order_item1) { create(:order_item, book: book) }
-#     let(:order_item2) { create(:order_item, book: book) }
-#     let(:order1) { create(:order, order_items: [order_item1, order_item2], user: user, credit_card: credit_card) }
-#     let(:billing_address) { create(:billing_address) }
-#     let(:shipping_address) { create(:shipping_address) }
-
-#     before do
-#       allow(order1).to receive(:billing_address) { billing_address }
-#       allow(order1).to receive(:shipping_address) { shipping_address }
-#       allow(order1).to receive(:delivery) { delivery }
-#     end
-
-#     context 'valid attributes' do
-#       it "assigns order.credit_card" do
-#         patch :update_payment, id: credit_card.id, order_id: order1, credit_card: attributes_for(:credit_card)
-#         expect(assigns(order.credit_card)).not_to be_nil
-#       end
-
-#       # it "receives update for order.credit_card" do
-#       #   expect(order1.credit_card).to receive(:update_attributes).with(attributes_for(:credit_card))
-#       #   patch :update_payment, id: credit_card.id, order_id: order1, credit_card: attributes_for(:credit_card)
-#       # end
-
-#       # it "redirects to paymen page" do
-#       #   patch :update_payment, id: credit_card.id, order_id: order1, credit_card: attributes_for(:credit_card)
-#       #   byebug
-#       #   expect(response).to redirect_to checkouts_confirm_path
-#       # end
-#     end
-
-#     # context 'invalid attributes' do
-#       # it "assigns order.credit_card" do
-#         # patch :update_payment, id: credit_card.id, order_id: order1, credit_card: attributes_for(:credit_card, :invalid)
-#         # byebug
-#         # expect(response).to redirect_to checkouts_payment_path
-#       # end
-
-#     # end
-#   end
-
-#   describe 'GET #confirm' do
-
-#     before do
-#       allow(controller).to receive(:check_confirm) { false }
-#       sign_in(user)
-#       get :confirm
-#     end
-
-#     it 'returns order if everything is valid' do
-#       credit_card = create(:credit_card, order: order)
-#       expect(order.credit_card).to be_valid
-#     end
-
-#     it 'does not return if credit_card invalid' do
-#       # byebug
-#       expect(order.credit_card).to be_nil
-#     end
-
-#     it 'render payment' do
-#       expect(response).to render_template :confirm
-#     end
-
-#   end
-
-#   describe "PATCH #place_order" do
-#   end
+  end
 
 end

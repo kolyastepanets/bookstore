@@ -3,14 +3,32 @@ require 'rails_helper'
 RSpec.describe OrdersController, type: :controller do
   let(:user) { create(:user) }
   let(:order) { create(:order, user: user) }
-  let!(:orders) { create_list(:order, 2, user: user) }
+  let(:delivered_orders) { create_list(:order, 2, user: user, aasm_state: "delivered") }
+  let(:in_delivery_orders) { create_list(:order, 2, user: user, aasm_state: "in_delivery") }
+  let(:in_processing_orders) { create_list(:order, 2, user: user, aasm_state: "in_processing") }
+
+  before { allow(controller).to receive(:current_user).and_return(user) }
+  before { allow(controller).to receive(:current_order).and_return(order) }
 
   describe 'GET #index' do
-    before { sign_in(user) }
+    sign_in_user
     before { get :index }
 
-    it 'has array of orders' do
-      expect(assigns(:orders)).to match_array(orders)
+    it 'returns current order' do
+      expect(assigns(:current_order)).to eq order
+    end
+
+    it 'has array of processing orders' do
+      expect(assigns(:in_processing)).to eq in_processing_orders
+    end
+
+    it 'has array of in delivery orders' do
+      expect(assigns(:in_delivery)).to eq in_delivery_orders
+    end
+
+    it 'has array of delivered orders' do
+      # binding.pry
+      expect(assigns(:delivered)).to eq delivered_orders
     end
 
     it 'render index' do
@@ -19,7 +37,7 @@ RSpec.describe OrdersController, type: :controller do
   end
 
   describe 'GET #show' do
-    before { sign_in(user) }
+    sign_in_user
     before { get :show, id: order, user: user }
 
     it 'assigns order to @order' do

@@ -15,7 +15,12 @@ class OrderItemsController < ApplicationController
     authorize! :destroy, OrderItem
     order_item = current_order.order_items.find(params[:id])
     order_item.destroy
-    redirect_to cart_path(current_order)
+    if current_order.order_items.empty?
+      current_order.destroy
+      redirect_to books_path
+    else
+      redirect_to cart_path(current_order)
+    end
   end
 
   private

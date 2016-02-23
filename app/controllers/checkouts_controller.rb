@@ -36,7 +36,6 @@ class CheckoutsController < ApplicationController
 
     end
     render_wizard
-    # byebug
   end
 
   def update
@@ -48,10 +47,10 @@ class CheckoutsController < ApplicationController
         new_params[:shipping_address_attributes] = calculate_shipping_attrs
 
         @order.update_attributes(new_params)
-
       when :delivery
         begin
           @order.update_attributes(delivery_params)
+        # binding.pry
         rescue
           flash[:alert] = "Choose delivery"
           jump_to(:delivery)
@@ -61,6 +60,7 @@ class CheckoutsController < ApplicationController
         @order.update_attributes(credit_card_params)
 
       when :confirm
+        @bla = "hehehe"
         @order.process!
     end
 
@@ -72,7 +72,6 @@ class CheckoutsController < ApplicationController
   end
 
   def completed
-    # binding.pry
     begin
       @proccesing_order = Order.find(session[:order_id])
     rescue

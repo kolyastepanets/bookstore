@@ -690,3 +690,113 @@ td.text-right.total-price-in-order {
     border-color: red;
   }
 }
+
+
+
+
+
+
+
+
+
+
+/* ORDERS INDEX */
+
+table > tbody > tr > td.table-title-order {
+  border-top: 2px solid black;
+}
+
+.in-progress-title {
+  margin: 0;
+  font-weight: bold;
+}
+
+.btn-go-to-cart {
+  margin-top: 10px;
+}
+
+table > tbody > tr > td.table-title-order-processing {
+  width: 120px;
+  border-top: 2px solid black;
+  padding-top: 16px;
+}
+
+table > tbody > tr > td.table-title-order-processing-number {
+  border-top: 2px solid black;
+  width: 160px;
+  padding-top: 16px;
+}
+
+table > tbody > tr > td.table-title-order-processing-date {
+  border-top: 2px solid black;
+  width: 160px;
+  padding-top: 16px;
+}
+
+table > tbody > tr > td.table-title-order-processing-total {
+  border-top: 2px solid black;
+  width: 80px;
+  padding-top: 16px;
+}
+
+table > tbody > tr > td.processing-order-link {
+  padding: 8px 0 0 8px;
+  border: none;
+  text-decoration: underline;
+}
+
+table > tbody > tr > td.date-processing-order {
+  padding: 8px 0 0 8px;
+  border: none;
+}
+
+table > tbody > tr > td.number-processing-order {
+  padding: 8px 0 0 8px;
+  border: none;
+}
+
+table > tbody > tr > td.table-title-order-processing:first-child {
+  padding-left: 16px;
+}
+
+table > tbody > tr > td.table-title-order-processing-last {
+  border-top: 2px solid black;
+}
+
+table > tbody > tr > td.total-price-processing-order {
+  padding: 8px 0 0 8px;
+  border: none;
+  /*width: 100px;*/
+}
+
+.processing-order {
+  margin-top: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+/*  ORDER SHOW   */
+
+.order-status {
+  display: inline-block;
+}
+
+h3.order-status {
+  margin-top: 0;
+}
+
+p.order-status {
+  margin-left: 20px;
+  color: gray;
+}
+
+.link-to-orders {
+  text-decoration: underline;
+}

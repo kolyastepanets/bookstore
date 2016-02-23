@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    current_user.orders.in_progress.last
+    current_user.orders.in_progress.last if current_user
     # byebug
   end
 

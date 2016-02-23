@@ -19,5 +19,5 @@ ratings:
 exclude_paths:
 - public/**
 - public/assets_test/**
-- config/initializers/**
+- config/initializers/rails_admin.rb
 - vendor/**/*

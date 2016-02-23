@@ -10,7 +10,7 @@ require 'capybara/rspec'
 require 'capybara-screenshot'
 require 'capybara-screenshot/rspec'
 require 'devise'
-
+require 'aasm/rspec'
 # require 'shoulda/matchers'
 # Add additional requires below this line. Rails is not loaded until this point!
 
