@@ -3,12 +3,14 @@ class RegistrationsController < Devise::RegistrationsController
   before_action :set_user
 
   def edit
+    authorize! :edit, User
     @user.build_shipping_address unless @user.shipping_address
     @user.build_billing_address unless @user.billing_address
     super
   end
 
   def update
+    authorize! :update, User
     params_to_update = detect_form
 
     if @user.update_attributes(params_to_update)
@@ -20,6 +22,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update_password
+    authorize! :update_password, User
     if @user.update_with_password(password_params)
       # binding.pry
       flash[:notice] = "Your password has been updated successefully"

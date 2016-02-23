@@ -21,19 +21,24 @@ describe Ability do
     let(:user) { create :user }
     let(:other_user) { create :user }
 
-    # it { should be_able_to :read, Order }
-    # it { should be_able_to :update, Order }
-    # it { should be_able_to :destroy, Order }
-
     it { should be_able_to :read, create(:order, user: user), user: user }
-    # it { should_not be_able_to :read, create(:order, user: other_user), user: user }
+    it { should_not be_able_to :read, create(:order, user: other_user), user: user }
 
-    it { should be_able_to :new, build(:review, user: user), user: user }
-    # it { should_not be_able_to :new, build(:review, user: other_user), user: user }
-    it { should be_able_to :create, create(:review, user: user), user: user }
+    it { should be_able_to :update, create(:order, user: user), user: user }
+    it { should_not be_able_to :update, create(:order, user: other_user), user: user }
+
+    it { should be_able_to :destroy, create(:order, user: user), user: user }
+    it { should_not be_able_to :destroy, create(:order, user: other_user), user: user }
+
+    it { should be_able_to :new, Review }
+    it { should be_able_to :create, Review }
 
     it { should be_able_to :create, OrderItem }
     it { should be_able_to :destroy, OrderItem }
+
+    it { should be_able_to :edit, User }
+    it { should be_able_to :update, User }
+    it { should be_able_to :update_password, User }
 
   end
 
