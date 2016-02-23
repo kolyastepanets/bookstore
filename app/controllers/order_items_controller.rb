@@ -29,4 +29,8 @@ class OrderItemsController < ApplicationController
       current_order ? current_order : create_order
     end
 
+    def create_order
+      @order = current_user.orders.create
+    end
+
 end

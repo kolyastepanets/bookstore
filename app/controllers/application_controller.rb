@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_order
-
+  helper_method :current_order
   before_filter :update_sanitized_params, if: :devise_controller?
 
   after_filter :store_location
@@ -17,10 +17,6 @@ class ApplicationController < ActionController::Base
         @order = current_order
       end
     end
-  end
-
-  def create_order
-    @order = current_user.orders.create
   end
 
   def current_order

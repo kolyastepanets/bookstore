@@ -7,7 +7,7 @@ class CartsController < ApplicationController
 
   def update
     authorize! :update, Order
-    current_order.order_items.update(params[:items].keys, params[:items].values)
+    @order.order_items.update(params[:items].keys, params[:items].values)
     # binding.pry
     redirect_to cart_path(@order)
   end

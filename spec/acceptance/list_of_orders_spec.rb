@@ -42,7 +42,7 @@ feature 'user can view orders', %q{
     click_on "SAVE AND CONTINUE"
 
 
-    choose('order_delivery_id_1', true)
+    choose('country_name11', true)
     click_on "SAVE AND CONTINUE"
 
 
