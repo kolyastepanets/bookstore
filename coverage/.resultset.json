@@ -808,7 +808,7 @@
         null,
         null,
         1,
-        270,
+        251,
         null,
         null,
         null,
@@ -908,7 +908,7 @@
         null,
         null
       ],
-      "/home/nikolay/work/ruby_garage/homework_model/new_bookstore/bs/app/controllers/checkouts_controller.rb": [
+      "/home/nikolay/work/ruby_garage/homework_model/new_bookstore/bs/app/controllers/checkout_controller.rb": [
         1,
         1,
         1,
@@ -971,7 +971,6 @@
         2,
         null,
         null,
-        2,
         2,
         null,
         null,
@@ -1251,7 +1250,12 @@
         1,
         null,
         1,
+        null,
         1,
+        null,
+        null,
+        1,
+        null,
         null
       ],
       "/home/nikolay/work/ruby_garage/homework_model/new_bookstore/bs/app/models/author.rb": [
@@ -1473,6 +1477,6 @@
         null
       ]
     },
-    "timestamp": 1456271398
+    "timestamp": 1456326675
   }
 }
