@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates :firstname, :lastname, presence: true
 
   has_many :orders
-  has_many :authorizations
+  has_many :authorizations, dependent: :destroy
   has_one :shipping_address, as: :addressable, class_name: "ShippingAddress"
   accepts_nested_attributes_for :shipping_address
 

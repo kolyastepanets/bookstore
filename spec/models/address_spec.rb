@@ -10,7 +10,7 @@ RSpec.describe Address, type: :model do
   it { should validate_presence_of(:first_name) }
 
   it { should validate_numericality_of(:zip) }
-  it { should validate_numericality_of(:phone) }
+  # it { should validate_numericality_of(:phone) }
 
   it { should belong_to(:addressable) }
 end

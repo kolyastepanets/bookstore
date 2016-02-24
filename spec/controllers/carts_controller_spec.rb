@@ -41,7 +41,7 @@ RSpec.describe CartsController, type: :controller do
 
       it 'redirect to order' do
         patch :update, id: order_item, items: { order_item.id => { quantity: 2 } }
-        expect(response).to redirect_to cart_path(order)
+        expect(response).to redirect_to cart_path
       end
     end
   end

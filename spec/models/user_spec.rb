@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of(:lastname) }
 
   it { should have_many(:orders)}
-  it { should have_many(:authorizations)}
+  it { should have_many(:authorizations).dependent(:destroy)}
 
   describe ".find_for_oauth" do
     let!(:user) { create(:user) }
