@@ -6,6 +6,13 @@ div class="row"
 
 div class="row columns-addresses"
   div class="col-xs-12 all-addresses"
+    - if current_user.errors.any?
+      #error_explanation
+        - current_user.errors.full_messages.each do |msg|
+          div class="alert alert-danger"
+            button.close[type="button" data-dismiss="alert" aria-hidden="true"]
+              | ×
+            = msg
     div class="col-xs-6 each-address-column"
       div class="col-xs-12 title-user-address"
         h4 BILLING ADDRESS
