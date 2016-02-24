@@ -56,8 +56,8 @@ div class="row columns-addresses"
           = number_to_currency order_item.total_price
 
       h6
-        | SHIPPING:
+        | SHIPPING: 
         = number_to_currency @order.delivery_price
       h6
-        | ORDER TOTAL:
+        | ORDER TOTAL: 
         = number_to_currency @order.total_price_with_delivery
