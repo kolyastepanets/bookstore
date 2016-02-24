@@ -61,7 +61,8 @@ div class="row columns-addresses"
           - @in_processing.each do |order|
             tr class=""
               td class="number-processing-order"
-                | 123123123
+                | R
+                = order.id
 
               td class="date-processing-order"
                 = order.completed_date

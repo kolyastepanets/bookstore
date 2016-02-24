@@ -4,7 +4,8 @@ div class="row columns-addresses"
       p class="link-to-orders"
         = link_to "<< Back to orders", orders_path
       h3 class="order-status"
-        | Order R342423423
+        | Order R
+        = @order.id
       p class="order-status"
         = @order.aasm_state
     div class="col-xs-12"
