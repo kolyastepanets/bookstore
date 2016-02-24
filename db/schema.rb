@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20160216115148) do
     t.integer  "country_id"
     t.integer  "zip"
     t.integer  "phone",            limit: 8
-    t.integer  "integer",          limit: 8
     t.integer  "addressable_id"
     t.string   "addressable_type"
     t.datetime "created_at",                 null: false

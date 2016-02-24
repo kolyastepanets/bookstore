@@ -8,7 +8,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :type
       t.integer :country_id
       t.integer :zip
-      t.integer :phone, :integer, limit: 8
+      t.integer :phone, limit: 8
       t.integer :addressable_id
       t.string :addressable_type
 
