@@ -24,11 +24,12 @@ ActiveRecord::Schema.define(version: 20160216115148) do
     t.string   "type"
     t.integer  "country_id"
     t.integer  "zip"
-    t.integer  "phone"
+    t.integer  "phone",            limit: 8
+    t.integer  "integer",          limit: 8
     t.integer  "addressable_id"
     t.string   "addressable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree

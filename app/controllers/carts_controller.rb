@@ -9,7 +9,7 @@ class CartsController < ApplicationController
     authorize! :update, Order
     @order.order_items.update(params[:items].keys, params[:items].values)
     # binding.pry
-    redirect_to cart_path(@order)
+    redirect_to cart_path
   end
 
   def destroy
