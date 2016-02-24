@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+  class RegistrationsController < Devise::RegistrationsController
   before_action :load_countries
   before_action :set_user
 

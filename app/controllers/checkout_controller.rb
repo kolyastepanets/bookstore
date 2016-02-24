@@ -1,4 +1,4 @@
-class CheckoutsController < ApplicationController
+class CheckoutController < ApplicationController
   skip_before_filter :setup_wizard, only: :completed
   before_action :check_order, only: [:show, :update]
 
@@ -60,7 +60,6 @@ class CheckoutsController < ApplicationController
         @order.update_attributes(credit_card_params)
 
       when :confirm
-        @bla = "hehehe"
         @order.process!
     end
 
@@ -82,7 +81,7 @@ class CheckoutsController < ApplicationController
   private
 
     def check_order
-      if wizard_path == "/checkouts/wicked_finish"
+      if wizard_path == "/checkout/wicked_finish"
         redirect_to completed_checkout_path
       elsif !current_order
         redirect_to books_path

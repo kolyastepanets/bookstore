@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :categories, only: :show
   resources :order_items, only: [:create, :destroy]
 
-  resources :carts, only: [:show, :update, :destroy]
+  resource :cart, only: [:show, :update, :destroy]
 
   resources :orders, only: [:index, :show]
 
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  resources :checkouts, only: [:show, :update] do
+  resources :checkout, only: [:show, :update] do
     member do
       get :completed
     end

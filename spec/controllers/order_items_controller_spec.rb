@@ -25,7 +25,7 @@ RSpec.describe OrderItemsController, type: :controller do
 
       it 'redirects to cart_path' do
         post :create, book_id: book
-        expect(response).to redirect_to cart_path(order)
+        expect(response).to redirect_to cart_path
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.describe OrderItemsController, type: :controller do
 
       it 'redirects to order' do
         delete :destroy, order_id: order1, id: order_item1
-        expect(response).to redirect_to cart_path(order1)
+        expect(response).to redirect_to cart_path
       end
     end
   end
