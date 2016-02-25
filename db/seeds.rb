@@ -605,7 +605,6 @@ Author.create(firstname: "David",
 
 User.create(firstname: "Sam",
             lastname: "Serious",
-            id: 1,
             email: "test@test.com",
             password: 12345678,
             admin: true
@@ -613,7 +612,6 @@ User.create(firstname: "Sam",
 
 User.create(firstname: "Sam22",
             lastname: "Serious22",
-            id: 2,
             email: "test1@test.com",
             password: 12345678
             )
