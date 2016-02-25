@@ -89,23 +89,53 @@ div class="row columns-addresses"
 
     table class="table"
       tr
-        td class="text-right total-price-in-order"
-          p class="p-book-price-in-cart"
+        td class="left-empty-column"
+        td class="text-right title-subtotal-price"
+          p class="p-title-for-table"
             | SUBTOTAL:
+        td class="text-left total-price-column"
           p class="p-book-price-in-cart"
             = number_to_currency @proccesing_order.total_price
-      tr class="line-in-cart"
-        td class="text-right ship-price"
-          p class="p-book-price-in-cart"
+
+      - if !@proccesing_order.coupon.nil?
+        tr
+          td class="left-empty-column"
+          td class="text-right title-for-integer"
+            p class="p-title-for-table"
+              | DISCOUNT:
+          td class="text-left discount-price-column"
+            p class="p-book-price-in-cart"
+              = @proccesing_order.coupon.discount
+              | %
+
+        tr
+          td class="left-empty-column"
+          td class="text-right title-for-integer"
+            - if !@proccesing_order.coupon.nil?
+              p class="p-title-for-table"
+                | SUBTOTAL WITH DISCOUNT:
+            - else
+              p class="p-title-for-table"
+                | SUBTOTAL:
+          td class="text-left total-price-with-discount-column"
+            p class="p-book-price-in-cart"
+              = number_to_currency @proccesing_order.total_price_with_discount
+
+      tr
+        td class="left-empty-column"
+        td class="text-right title-for-integer"
+          p class="p-title-for-table"
             | SHIPPING:
+        td class="text-left shipping-price-column"
           p class="p-book-price-in-cart"
             = number_to_currency @proccesing_order.delivery_price
 
-    table class="table"
       tr
-        td class="text-right total-price-in-order"
-          p class="p-book-price-in-cart"
+        td class="left-empty-column buttons-for-cart"
+        td class="text-right buttons-for-cart"
+          p class="p-title-for-table"
             | ORDER TOTAL:
+        td class="text-left buttons-for-cart"
           p class="p-book-price-in-cart"
             = number_to_currency @proccesing_order.total_price_with_delivery
 

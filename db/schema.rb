@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216115148) do
+ActiveRecord::Schema.define(version: 20160225110346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,13 @@ ActiveRecord::Schema.define(version: 20160216115148) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "coupons", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "credit_cards", force: :cascade do |t|
     t.integer  "number",           limit: 8
     t.integer  "integer",          limit: 8
@@ -117,8 +124,10 @@ ActiveRecord::Schema.define(version: 20160216115148) do
     t.integer  "delivery_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.integer  "coupon_id"
   end
 
+  add_index "orders", ["coupon_id"], name: "index_orders_on_coupon_id", using: :btree
   add_index "orders", ["delivery_id"], name: "index_orders_on_delivery_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 

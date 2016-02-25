@@ -50,7 +50,6 @@ class CheckoutController < ApplicationController
       when :delivery
         begin
           @order.update_attributes(delivery_params)
-        # binding.pry
         rescue
           flash[:alert] = "Choose delivery"
           jump_to(:delivery)

@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
   validates :completed_date, :aasm_state, :user_id, presence: true
 
   belongs_to :user
+  belongs_to :coupon
   belongs_to :delivery
 
   has_many :order_items, dependent: :destroy
@@ -54,12 +55,20 @@ class Order < ActiveRecord::Base
     order_items.to_a.sum { |item| item.total_price }
   end
 
+  def total_price_with_discount
+    total_price - count_discount
+  end
+
   def delivery_price
     delivery.nil? ? 0 : delivery.price
   end
 
+  def count_discount
+    coupon.nil? ? 0 : coupon.discount * total_price / 100
+  end
+
   def total_price_with_delivery
-    total_price + delivery_price
+    total_price_with_discount + delivery_price
   end
 
   def total_quantity

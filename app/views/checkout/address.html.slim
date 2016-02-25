@@ -87,10 +87,19 @@ div class="row"
             h6
               => truncate(order_item.book.title, length: 15)
               = number_to_currency order_item.total_price
+          - if !@order.coupon.nil?
+            h6
+              | Discount: 
+              = @order.coupon.discount
+              |%
 
-          h6
-            | ORDER TOTAL: 
-            = number_to_currency @order.total_price
+            h6
+              | Order total with discount: 
+              = number_to_currency @order.total_price_with_discount
+          - else
+            h6
+              | ORDER TOTAL: 
+              = number_to_currency @order.total_price
 
     div class="col-xs-12"
       = f.submit "SAVE AND CONTINUE", class: "btn btn-primary address-input-field"

@@ -78,9 +78,16 @@ div class="row columns-addresses"
           => truncate(order_item.book.title, length: 15)
           = number_to_currency order_item.total_price
 
+      - if !@order.coupon.nil?
+        h6
+          | Discount: 
+          = @order.coupon.discount
+          |%
+
       h6
         | SHIPPING: 
         = number_to_currency @order.delivery_price
+
       h6
         | ORDER TOTAL: 
         = number_to_currency @order.total_price_with_delivery

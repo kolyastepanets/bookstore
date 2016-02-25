@@ -465,18 +465,77 @@ tr.line-in-cart:last-child {
   display: inline;
 }
 
-.p-book-price-in-cart:first-child {
+.p-book-price-in-cart {
   margin-right: 10px;
-}
-
-.p-book-price-in-cart:last-child {
   font-size: 17px;
   font-weight: bold;
+}
+
+.p-title-for-table {
+  font-size: 14px;
 }
 
 .empty-rignt {
   width: 25px;
 }
+
+table > tbody > tr > td.text-right {
+  border: none;
+}
+
+table > tbody > tr > td.text-left.discount-price-column {
+  border: none;
+  padding: 0 0 0 10px;
+}
+
+table > tbody > tr > td.text-left.total-price-column {
+  padding: 8px 0 0 10px;
+  width: 80px;
+}
+
+table > tbody > tr > td.text-right.title-for-integer {
+  padding: 0 10px 0px 0;
+}
+
+table > tbody > tr > td.text-right.title-subtotal-price {
+  padding: 10px 10px 0px 0;
+}
+
+table > tbody > tr > td.text-right.title-subtotal-price-with-discount {
+  padding: 0 10px 0 0;
+}
+
+table > tbody > tr > td.text-left.total-price-with-discount-column {
+  padding: 0 0 0 10px;
+  border: none;
+}
+
+table > tbody > tr > td.text-left.shipping-price-column {
+  padding: 0 0 0 10px;
+  border: none;
+}
+
+table > tbody > tr > td.left-empty-column {
+  min-width: 380px;
+  border: none;
+}
+
+table > tbody > tr > td.empty-rignt {
+  border: none;
+}
+
+table > tbody > tr > td.buttons-for-cart {
+  border-top: 2px solid black;
+}
+
+table > tbody > tr > td.empty-column {
+  border-top: 2px solid black;
+}
+
+
+
+
+
 
 
 

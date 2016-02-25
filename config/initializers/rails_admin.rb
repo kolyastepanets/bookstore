@@ -115,6 +115,17 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model "Coupon" do
+    edit do
+      field :name
+      field :discount
+
+      field :discount do
+        label "Enter discount in %"
+      end
+    end
+  end
+
   config.model 'Address' do
     visible false
   end
