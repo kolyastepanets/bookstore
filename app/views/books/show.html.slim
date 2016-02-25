@@ -46,14 +46,14 @@ div class="row"
             table class="table"
               tr
                 th class="book-rating"
-                  = review.value
+                  = render_stars(review.value)
                 th class="title-review"
                   = review.title
                 th class="created-review"
                   = review.created_at.strftime("%B %e, %Y")
 
           div class="col-xs-12 link-to-customer"
-            | by
+            | by 
             = link_to '', class: "link"
               => review.user.firstname
               |

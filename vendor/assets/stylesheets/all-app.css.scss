@@ -344,9 +344,9 @@ label.remember_me {
   margin-bottom: 30px;
 }
 
-th.book-rating {
-  padding: 0;
-  width: 120px;
+table > tbody > tr > th.book-rating {
+  padding: 8px 0;
+  width: 110px;
   margin: 0;
 }
 
