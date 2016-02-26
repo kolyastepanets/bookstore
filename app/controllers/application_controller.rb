@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  rescue_from Exception, :with => :error_render_method
+
+  def error_render_method
+    redirect_to books_path
+  end
+
   before_action :set_order
   helper_method :current_order
   before_filter :update_sanitized_params, if: :devise_controller?
