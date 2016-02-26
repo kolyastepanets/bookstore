@@ -11,6 +11,7 @@ Author.delete_all
 User.delete_all
 Country.delete_all
 Authorization.delete_all
+Coupon.delete_all
 
 Book.create(title: "The Ruby Programming Language",
             description: %{
@@ -637,4 +638,8 @@ Delivery.create(name: "UPS Two Day",
 Delivery.create(name: "UPS One Day",
                 price: 15,
                 id: 3
+            )
+
+Coupon.create(name: "blackfriday",
+              discount: 30
             )

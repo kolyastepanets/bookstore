@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :coupon do
-    name "MyString"
-    discount 0.5
+    name "blackfriday"
+    discount 20
     order
   end
 end
