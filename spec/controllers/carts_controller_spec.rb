@@ -8,6 +8,7 @@ RSpec.describe CartsController, type: :controller do
   let!(:order_item2) { create(:order_item, book: book2) }
   let!(:order) { create(:order, order_items: [order_item, order_item2], user: user) }
   let!(:coupon) { create(:coupon) }
+  let!(:other_coupon) { create(:coupon, name: "new_year") }
 
   before do
     @ability = Object.new
@@ -58,10 +59,9 @@ RSpec.describe CartsController, type: :controller do
         expect(order.coupon).not_to be_nil
       end
 
-      it "does nothing if coupon used" do
-        order = create(:order, coupon: coupon)
-        expect(order.coupon).not_to be_nil
-        patch :update, id: order, order: { "coupon_attributes"=>{"name"=>"blackfriday"} }
+      it "uses another coupon" do
+        patch :update, id: order, order: { "coupon_attributes"=>{"name"=>"new_year"} }
+        expect(order.coupon.name).to eq "new_year"
       end
 
       it "does nothing if params empty" do
