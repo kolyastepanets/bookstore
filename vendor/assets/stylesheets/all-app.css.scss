@@ -39,7 +39,7 @@ body {
 }
 
 .header-info {
-  height: 66px;
+  /*height: 66px;*/
 }
 
 .header-info:last-child {
@@ -287,18 +287,21 @@ label.remember_me {
 }
 
 .caption {
-  height: 120px;
+  height: 9em;
 }
 
-/*
-.row-eq-height-xs {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:  flex;
-  flex-direction: initial;
-  flex-wrap: wrap;
-}*/
+ul.pagination {
+  margin-left: 13em;
+}
+
+
+
+
+
+
+
+
+
 
 
 
