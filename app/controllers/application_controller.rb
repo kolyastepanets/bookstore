@@ -19,15 +19,18 @@ class ApplicationController < ActionController::Base
 
   def set_order
     if current_user
-      if current_order
-        @order = current_order
+      @order = current_order
+    else
+      begin
+        @order = Order.find(session[:order_id])
+      rescue
+        @order = nil
       end
     end
   end
 
   def current_order
     current_user.orders.in_progress.last if current_user
-    # byebug
   end
 
   def order_in_process

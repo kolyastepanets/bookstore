@@ -7,7 +7,7 @@ div class="row columns-addresses"
       tr
         h4 class="in-progress-title"
           | IN PROGRESS
-        - unless @current_order.nil?
+        - unless @current_order.nil? || @current_order.order_items.empty?
           td class="table-title-order"
           td class="table-title-order"
             | BOOK

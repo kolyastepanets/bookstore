@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
   include AASM
   before_save :update_total_price
 
-  validates :completed_date, :aasm_state, :user_id, presence: true
+  validates :completed_date, :aasm_state, presence: true
 
   belongs_to :user
   belongs_to :coupon
@@ -82,7 +82,7 @@ class Order < ActiveRecord::Base
 
   def building_billing_address
     unless billing_address
-      if current_user.billing_address.present?
+      if current_user && current_user.billing_address.present?
         build_billing_address(current_user.billing_address.attributes)
       else
         build_billing_address
@@ -92,7 +92,7 @@ class Order < ActiveRecord::Base
 
   def building_shipping_address
     unless shipping_address
-      if current_user.shipping_address.present?
+      if current_user && current_user.shipping_address.present?
         build_shipping_address(current_user.shipping_address.attributes)
       else
         build_shipping_address

@@ -1,10 +1,9 @@
 class OrderItemsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_current_order
 
   def create
     authorize! :create, OrderItem
-    if current_order.add_book(params[:book_id], params[:quantity], params[:price])
+    if @order.add_book(params[:book_id], params[:quantity], params[:price])
       redirect_to cart_path
     else
       redirect_to book_path(params[:book_id])
@@ -13,10 +12,10 @@ class OrderItemsController < ApplicationController
 
   def destroy
     authorize! :destroy, OrderItem
-    order_item = current_order.order_items.find(params[:id])
+    order_item = @order.order_items.find(params[:id])
     order_item.destroy
-    if current_order.order_items.empty?
-      current_order.destroy
+    if @order.order_items.empty?
+      @order.destroy
       redirect_to books_path
     else
       redirect_to cart_path
@@ -26,7 +25,16 @@ class OrderItemsController < ApplicationController
   private
 
     def set_current_order
-      current_order ? current_order : create_order
+      if current_user
+        current_order ? @order = current_order : create_order
+      else
+        begin
+          @order = Order.find(session[:order_id])
+        rescue
+          @order = Order.create
+          session[:order_id] = @order.id
+        end
+      end
     end
 
     def create_order

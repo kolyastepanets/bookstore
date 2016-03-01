@@ -7,8 +7,15 @@ describe Ability do
     let(:user) { nil }
 
     it { should be_able_to :read, Book }
-    it { should be_able_to :read, Category }
     it { should be_able_to :read, Author }
+    it { should be_able_to :read, Category }
+
+    it { should be_able_to :show, Order }
+    it { should be_able_to :update, Order }
+    it { should be_able_to :destroy, Order }
+
+    it { should be_able_to :create, OrderItem }
+    it { should be_able_to :destroy, OrderItem }
   end
 
   describe 'for admin' do
@@ -32,9 +39,6 @@ describe Ability do
 
     it { should be_able_to :new, Review }
     it { should be_able_to :create, Review }
-
-    it { should be_able_to :create, OrderItem }
-    it { should be_able_to :destroy, OrderItem }
 
     it { should be_able_to :edit, User }
     it { should be_able_to :update, User }

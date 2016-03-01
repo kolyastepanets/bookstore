@@ -6,7 +6,7 @@ class CheckoutController < ApplicationController
 
   steps :address, :delivery, :payment, :confirm
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def show
     case step
@@ -31,7 +31,7 @@ class CheckoutController < ApplicationController
           jump_to(:payment)
           flash[:alert] = "Please, fill in form"
         end
-        session[:order_id] = @order.id
+        session[:proccesing_order_id] = @order.id
         @order
 
     end
@@ -60,6 +60,7 @@ class CheckoutController < ApplicationController
 
       when :confirm
         @order.process!
+        session[:order_id] = nil
     end
 
     render_wizard @order
@@ -71,7 +72,7 @@ class CheckoutController < ApplicationController
 
   def completed
     begin
-      @proccesing_order = Order.find(session[:order_id])
+      @proccesing_order = Order.find(session[:proccesing_order_id])
     rescue
       redirect_to books_path
     end
@@ -82,7 +83,7 @@ class CheckoutController < ApplicationController
     def check_order
       if wizard_path == "/checkout/wicked_finish"
         redirect_to completed_checkout_path
-      elsif !current_order
+      elsif @order.order_items.empty?
         redirect_to books_path
       end
     end

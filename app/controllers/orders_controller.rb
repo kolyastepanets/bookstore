@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @current_order = current_order
+    @current_order = @order
     @in_processing = current_user.orders.in_processing.order(created_at: :ASC)
     @in_delivery = current_user.orders.in_delivery.order(created_at: :ASC)
     @delivered = current_user.orders.delivered.order(created_at: :ASC)
