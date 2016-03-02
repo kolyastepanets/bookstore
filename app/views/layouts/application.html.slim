@@ -32,7 +32,7 @@ html
                   p class="empty-cart"
                     | (Empty Cart)
                 - else
-                  = link_to "#{@order.total_quantity} ( #{number_to_currency @order.total_price} )", cart_path, class: "btn btn-link"
+                  = link_to "#{@order.total_quantity} ( #{number_to_currency @order.total_price_with_delivery_with_discount} )", cart_path, class: "btn btn-link"
               - else
                 p class="empty-cart"
                   | (Empty Cart)

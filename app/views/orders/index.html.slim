@@ -68,7 +68,7 @@ div class="row columns-addresses"
                 = order.completed_date
 
               td class="total-price-processing-order"
-                = number_to_currency order.total_price_with_delivery
+                = number_to_currency order.total_price_with_delivery_with_discount
 
               td class="processing-order-link"
                 = link_to "View", order_path(order)
@@ -96,7 +96,7 @@ div class="row columns-addresses"
                 = order.completed_date
 
               td class="total-price-processing-order"
-                = number_to_currency order.total_price_with_delivery
+                = number_to_currency order.total_price_with_delivery_with_discount
 
               td class="processing-order-link"
                 = link_to "View", order_path(order)
@@ -124,7 +124,7 @@ div class="row columns-addresses"
                 = order.completed_date
 
               td class="total-price-processing-order"
-                = number_to_currency order.total_price_with_delivery
+                = number_to_currency order.total_price_with_delivery_with_discount
 
               td class="processing-order-link"
                 = link_to "View", order_path(order)

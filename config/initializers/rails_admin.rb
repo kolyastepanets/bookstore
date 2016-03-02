@@ -81,7 +81,7 @@ RailsAdmin.config do |config|
 
   config.model 'Order' do
     list do
-      field :total_price_with_delivery
+      field :total_price_with_delivery_with_discount
       field :aasm_state do
         label "Order States"
       end

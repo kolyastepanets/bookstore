@@ -67,7 +67,7 @@ class Order < ActiveRecord::Base
     coupon.nil? ? 0 : coupon.discount * total_price / 100
   end
 
-  def total_price_with_delivery
+  def total_price_with_delivery_with_discount
     total_price_with_discount + delivery_price
   end
 
@@ -112,7 +112,7 @@ class Order < ActiveRecord::Base
     end
 
     def update_total_price
-      self.total_price = total_price_with_delivery
+      self.total_price = total_price_with_delivery_with_discount
     end
 
 end
