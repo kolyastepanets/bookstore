@@ -32,9 +32,9 @@ class Ability
     can :rud, [Order], user_id: user.id
     can :new, [Review]
     can :create, [Review]
-    can :edit, [User]
-    can :update, [User]
-    can :update_password, [User]
+    can :edit, [User], id: user.id
+    can :update, [User], id: user.id
+    can :update_password, [User], id: user.id
 
   end
 

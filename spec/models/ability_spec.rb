@@ -40,9 +40,9 @@ describe Ability do
     it { should be_able_to :new, Review }
     it { should be_able_to :create, Review }
 
-    it { should be_able_to :edit, User }
-    it { should be_able_to :update, User }
-    it { should be_able_to :update_password, User }
+    it { should be_able_to :edit, user }
+    it { should be_able_to :update, user }
+    it { should be_able_to :update_password, user }
 
   end
 
