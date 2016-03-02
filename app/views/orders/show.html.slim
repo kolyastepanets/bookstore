@@ -1,13 +1,13 @@
 div class="row columns-addresses"
-  - unless @order.nil?
+  - unless @old_order.nil?
     div class="col-xs-12"
       p class="link-to-orders"
         = link_to "<< Back to orders", orders_path
       h3 class="order-status"
         | Order R
-        = @order.id
+        = @old_order.id
       p class="order-status"
-        = @order.aasm_state
+        = @old_order.aasm_state
     div class="col-xs-12"
       table class="table"
         tr
@@ -20,7 +20,7 @@ div class="row columns-addresses"
             | QTY
           td class="table-title-order"
             | TOTAL
-          - @order.order_items.each do |order_item|
+          - @old_order.order_items.each do |order_item|
             tr class="line-in-cart"
               td
                 = link_to book_path(order_item.book)
@@ -46,9 +46,9 @@ div class="row columns-addresses"
               | SUBTOTAL:
           td class="text-left total-price-column"
             p class="p-book-price-in-cart"
-              = number_to_currency @order.total_price
+              = number_to_currency @old_order.total_price
 
-        - if !@order.coupon.nil?
+        - if !@old_order.coupon.nil?
           tr
             td class="left-empty-column"
             td class="text-right title-for-integer"
@@ -56,13 +56,13 @@ div class="row columns-addresses"
                 | DISCOUNT:
             td class="text-left discount-price-column"
               p class="p-book-price-in-cart"
-                = @order.coupon.discount
+                = @old_order.coupon.discount
                 | %
 
           tr
             td class="left-empty-column"
             td class="text-right title-for-integer"
-              - if !@order.coupon.nil?
+              - if !@old_order.coupon.nil?
                 p class="p-title-for-table"
                   | SUBTOTAL WITH DISCOUNT:
               - else
@@ -70,7 +70,7 @@ div class="row columns-addresses"
                   | SUBTOTAL:
             td class="text-left total-price-with-discount-column"
               p class="p-book-price-in-cart"
-                = number_to_currency @order.total_price_with_discount
+                = number_to_currency @old_order.total_price_with_discount
 
         tr
           td class="left-empty-column"
@@ -79,7 +79,7 @@ div class="row columns-addresses"
               | SHIPPING:
           td class="text-left shipping-price-column"
             p class="p-book-price-in-cart"
-              = number_to_currency @order.delivery_price
+              = number_to_currency @old_order.delivery_price
 
         tr
           td class="left-empty-column buttons-for-cart"
@@ -88,4 +88,4 @@ div class="row columns-addresses"
               | ORDER TOTAL:
           td class="text-left buttons-for-cart"
             p class="p-book-price-in-cart"
-              = number_to_currency @order.total_price_with_delivery_with_discount
+              = number_to_currency @old_order.total_price_with_delivery_with_discount
