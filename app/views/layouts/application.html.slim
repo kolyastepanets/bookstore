@@ -13,7 +13,7 @@ html
         .row
           .col-xs-3.header-info
             h3.text-muted
-              | The Bookstore
+              = t ".the_bookstore"
 
           .col-xs-3.header-info
             .home-shop
@@ -25,12 +25,16 @@ html
 
           .col-xs-3.header-info
             .col-xs-6.cart-img
-              = image_tag("cart.png", :alt => "Cart", class:"image-cart")
+              div class="div-image-cart"
+                = image_tag("cart.png", :alt => "Cart", class:"image-cart")
+              div class="div-text-cart"
+                p class="text-cart"
+                  = t ".cart"
             .col-xs-6.cart-text
               - if !@order.nil?
                 - if @order.order_items.size == 0
                   p class="empty-cart"
-                    | (Empty Cart)
+                    = t ".empty_cart"
                 - else
                   = link_to "#{@order.total_quantity} ( #{number_to_currency @order.total_price_with_delivery_with_discount} )", cart_path, class: "btn btn-link"
               - else

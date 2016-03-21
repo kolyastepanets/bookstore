@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   rescue_from Exception, :with => :error_render_method
 
   def error_render_method
-    redirect_to books_path
+    redirect_to main_app.books_path
   end
 
   before_action :set_order

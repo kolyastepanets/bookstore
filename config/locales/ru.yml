@@ -1,0 +1,11 @@
+en:
+  books:
+    index:
+      shop: "Магазин"
+      shop_by_categories: "ПО КАТЕГОРИЯМ"
+  layouts:
+    application:
+      the_bookstore: "Книжный Магазин"
+      home: "Домой"
+      cart: "Корзина"
+      empty_cart: "(Пустая корзина)"

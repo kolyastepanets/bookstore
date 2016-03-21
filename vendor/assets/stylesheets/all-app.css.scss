@@ -60,13 +60,14 @@ body {
 }
 
 .cart-img {
+  margin-left: 2em;
   padding: 0;
-  width: 80px;
+  width: 6em;
 }
 
 .image-cart {
   margin-top: 10px;
-  margin-left: 15px;
+  /*margin-left: 15px;*/
 }
 
 .cart-text {
@@ -75,7 +76,7 @@ body {
 }
 
 .empty-cart {
-  margin: 10px 0 0 10px;
+  margin: 10px 0;
 }
 
 .settings-links {
@@ -84,6 +85,21 @@ body {
 
 .products {
   margin-top: 20px;
+}
+
+.text-cart {
+  /*display: inline;*/
+}
+
+.div-image-cart {
+  width: 3em;
+  float: left;
+}
+
+.div-text-cart {
+  float: left;
+    margin-top: 1em;
+    font-size: 17px;
 }
 
 

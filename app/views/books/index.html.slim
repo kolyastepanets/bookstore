@@ -2,7 +2,7 @@ div class="row"
   div class="col-xs-9"
     div class="title-book"
       p
-        | SHOP
+        = t ".shop"
     div class="col-xs-12"
       div class="row"
         - @books.each do |book|
@@ -20,7 +20,7 @@ div class="row"
   div class="col-xs-3"
     div class="shop"
       h5 class="text-muted"
-        | SHOP BY CATEGORIES
+        = t ".shop_by_categories"
       div class="row"
         - @categories.each do |category|
           div class="col-xs-12"
